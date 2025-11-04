@@ -42,7 +42,7 @@
 .halo1 {
   width: 1500px;
   height: 1500px;
-  background: rgba(10, 230, 210, 0.5);
+  background: rgba(14, 40, 163, 0.5);
   top: 20%;
   left: -50%;
   animation: float1 20s ease-in-out infinite alternate;
@@ -62,7 +62,7 @@
 .halo3 {
   width: 1000px;
   height: 1000px;
-  background: rgb(255, 255, 255);
+  background: rgba(14, 40, 163, 0.5);
   top: 10%;
   left: 20%;
   animation: float2 5s ease-in-out infinite alternate;

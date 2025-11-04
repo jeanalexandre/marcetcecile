@@ -3,6 +3,26 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Rendez-vous — Marc & Cécile">
+
+  <section class="relative h-[60vh] w-full overflow-hidden">
+    <!-- Image + mask -->
+    <img
+        src="/marcetcecile/images/lunettes.jpg"
+        alt="Showroom Marc & Cécile"
+        class="absolute inset-0 w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
+
+    <!-- Contenu -->
+    <div class="relative z-10 flex items-center justify-center h-full container-max">
+      <div class="max-w-2xl text-center text-white">
+        <h1 class="text-5xl font-display mb-4 drop-shadow-lg">Marc & Cécile</h1>
+        <p class="text-lg text-white/90 mb-6">Opticien artisan lunetier — showroom stylisé et fabrication sur-mesure au cœur de Cambrai.</p>
+        <a href="/marcetcecile/contact" class="btn-primary">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </section>
+
   <section class="container-max py-16 text-center">
     <h1 class="text-4xl font-display text-[var(--color-primary)] mb-6">Prendre rendez-vous</h1>
     <p class="text-gray-700 mb-8">Réservez un examen de la vue de 30 minutes. Le module de réservation sera intégré ici (Calendly) — en attendant, contactez-nous :</p>

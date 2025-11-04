@@ -1,60 +1,116 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Carousel from '../components/Carousel.astro';
 
-const brandImages = [
-	{ src: 'https://images.unsplash.com/photo-1520975917837-3b7a5b5e5d4b?q=80&w=1200&auto=format&fit=crop', alt: 'Theo eyewear', caption: 'Theo' },
-	{ src: 'https://images.unsplash.com/photo-1517949908114-0c9f2f5d1f6d?q=80&w=1200&auto=format&fit=crop', alt: 'designer glasses', caption: 'Collection' },
-	{ src: 'https://images.unsplash.com/photo-1536305030017-0f3b0cc6c1f6?q=80&w=1200&auto=format&fit=crop', alt: 'frames display', caption: 'Showroom' }
+const brandLogos = [
+	{ src: '/marcetcecile/images/marque-theo.png', alt: 'Theo' },
+	{ src: '/marcetcecile/images/marque-police.png', alt: 'Police' },
+	{ src: '/marcetcecile/images/marque-theo.png', alt: 'Theo' },
+	{ src: '/marcetcecile/images/marque-police.png', alt: 'Police' },
+	{ src: '/marcetcecile/images/marque-theo.png', alt: 'Theo' },
+	{ src: '/marcetcecile/images/marque-police.png', alt: 'Police' },
 ];
 ---
 
 <Layout title="Marc & Cécile — Opticien à Cambrai">
-
+	<!-- === HERO SECTION (inchangée) === -->
 	<section class="relative h-[60vh] w-full overflow-hidden">
-		<!-- Image + mask -->
-		<img
-				src="/marcetcecile/images/lunettes.jpg"
-				alt="Showroom Marc & Cécile"
-				class="absolute inset-0 w-full h-full object-cover"
-		/>
+		<img src="/marcetcecile/images/lunettes.jpg" alt="Showroom Marc & Cécile"
+				 class="absolute inset-0 w-full h-full object-cover" />
 		<div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
 
-		<!-- Contenu -->
 		<div class="relative z-10 flex items-center justify-center h-full container-max">
 			<div class="max-w-2xl text-center text-white">
 				<h1 class="text-5xl font-display mb-4 drop-shadow-lg">Marc & Cécile</h1>
-				<p class="text-lg text-white/90 mb-6">Opticien artisan lunetier — showroom stylisé et fabrication sur-mesure au cœur de Cambrai.</p>
+				<p class="text-lg text-white/90 mb-6">
+					Opticien artisan lunetier — showroom stylisé et fabrication sur-mesure au cœur de Cambrai.
+				</p>
 				<a href="/marcetcecile/contact" class="btn-primary">Prendre rendez-vous</a>
 			</div>
 		</div>
 	</section>
 
+	<!-- === BANDEAU DE LOGOS (plus fin et aérien) === -->
+	<section
+			class="relative -mt-8 z-20 bg-white/100 backdrop-blur-sm shadow-lg rounded-xl px-8 py-4 mx-auto
+         flex flex-wrap justify-center items-center gap-10 max-w-3xl">
+		{brandLogos.map(logo => (
+				<img src={logo.src} alt={logo.alt}
+						 class="h-16 w-auto opacity-70 hover:opacity-100 transition" />
+		))}
+	</section>
 
+	<!-- === SECTIONS ALTERNÉES === -->
+	<div class="container-max">
+		{[
+			{
+				title: 'La boutique',
+				text: `Découvrez un espace lumineux et chaleureux, conçu pour offrir une expérience d’achat agréable et personnalisée. 
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+				img: '/marcetcecile/images/boutique.png',
+				alt: 'La boutique',
+			},
+			{
+				title: 'Salle d’examen',
+				text: `Une salle d’examen équipée des dernières technologies pour un suivi précis de votre santé visuelle. 
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+				img: '/marcetcecile/images/salle-exam.png',
+				alt: 'Salle d’examen',
+			},
+			{
+				title: 'L’équipe',
+				text: `Une équipe d’artisans lunetiers passionnés et à l’écoute, formés pour vous conseiller et ajuster chaque monture 
+               à votre visage. Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+				img: '/marcetcecile/images/team.png',
+				alt: 'Équipe Marc & Cécile',
+			},
+			{
+				title: 'Nos marques',
+				text: `Nous collaborons avec les plus grandes marques de lunetterie, mêlant design, innovation et savoir-faire artisanal. 
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+				img: '/marcetcecile/images/lunettes-2.png',
+				alt: 'Marques partenaires',
+			},
+		].map((section, index) => (
+				<section
+						class="py-16 flex flex-col md:flex-row items-center gap-10 md:[&:nth-child(even)]:flex-row-reverse">
+					<div class="flex-1">
+						<h2 class="text-3xl font-bold text-[var(--color-secondary)] mb-4">{section.title}</h2>
+						<p class="text-gray-700 leading-relaxed">{section.text}</p>
+					</div>
+					<img src={section.img} alt={section.alt}
+							 class="flex-1 w-full h-80 object-cover rounded-lg shadow-md" />
+				</section>
+		))}
+	</div>
 
+	<section class="py-16 bg-[var(--color-primary)/5]">
+		<div class="container-max grid gap-12 md:grid-cols-2 items-center">
+			<!-- Texte / adresse -->
+			<div class="flex flex-col gap-4">
+				<h2 class="text-3xl font-bold text-[var(--color-secondary)] mb-2">Notre boutique</h2>
+				<p class="text-gray-700 leading-relaxed">
+					12 Rue de l’Optique<br />
+					59400 Cambrai<br />
+					France
+				</p>
+				<p class="text-gray-700">
+					Horaires :<br />
+					Lundi - Vendredi : 9h - 18h<br />
+					Samedi : 10h - 16h
+				</p>
+				<a href="https://maps.app.goo.gl/ADMNBrK8LL8rerjSA"
+					 target="_blank"
+					 class="btn-secondary mt-4 inline-block w-max"
+				>
+					Voir sur Google Maps
+				</a>
+			</div>
 
-
-	<section class="container-max py-12 grid gap-8 grid-cols-1 md:grid-cols-2 items-stretch">
-		<div class="rounded-lg p-6 bg-[var(--color-primary)/10] shadow-md-strong">
-			<h2 class="text-2xl font-semibold text-[var(--color-secondary)] mb-3">Showroom stylisé</h2>
-			<p class="text-gray-700 mb-4">Un espace inspirant avec des couleurs vives, conçu pour que vous puissiez essayer nos montures dans les meilleures conditions.</p>
-			<img src="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1200&auto=format&fit=crop" alt="Showroom" class="w-full h-48 object-cover rounded-md"/>
+			<!-- Carte Google Map -->
+			<div class="w-full h-80 md:h-96 rounded-lg shadow-md overflow-hidden">
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.3088747085694!2d3.2312529765528955!3d50.17406100722598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2bb25846bdc77%3A0x2160eb5f42a18130!2sMARC%26CECILE%20-%20OPTICIENS!5e0!3m2!1sfr!2sfr!4v1762286124829!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
 		</div>
-
-		<div class="rounded-lg p-6 bg-white shadow-md-strong">
-			<h2 class="text-2xl font-semibold text-[var(--color-secondary)] mb-3">Salle d’examen</h2>
-			<p class="text-gray-700 mb-4">Salle d’examen équipée pour mesurer et suivre la santé visuelle, dans un cadre rassurant et professionnel.</p>
-			<img src="https://images.unsplash.com/photo-1588776814546-1b2c6f2a4d22?q=80&w=1200&auto=format&fit=crop" alt="Examen vue" class="w-full h-48 object-cover rounded-md"/>
-		</div>
 	</section>
 
-	<section class="container-max py-10">
-		<h3 class="text-3xl text-center font-bold text-[var(--color-secondary)] mb-6">Nos marques partenaires</h3>
-		<Carousel images={brandImages} />
-	</section>
-
-	<section class="container-max py-10 text-center">
-		<p class="text-lg text-gray-700 mb-6">Envie d'un style unique ? Passez à l'atelier pour une création sur mesure.</p>
-		<a href="/marcetcecile/atelier" class="btn-secondary">Découvrir l'atelier</a>
-	</section>
 </Layout>
