@@ -1,11 +1,60 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Carousel from '../components/Carousel.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const brandImages = [
+	{ src: 'https://images.unsplash.com/photo-1520975917837-3b7a5b5e5d4b?q=80&w=1200&auto=format&fit=crop', alt: 'Theo eyewear', caption: 'Theo' },
+	{ src: 'https://images.unsplash.com/photo-1517949908114-0c9f2f5d1f6d?q=80&w=1200&auto=format&fit=crop', alt: 'designer glasses', caption: 'Collection' },
+	{ src: 'https://images.unsplash.com/photo-1536305030017-0f3b0cc6c1f6?q=80&w=1200&auto=format&fit=crop', alt: 'frames display', caption: 'Showroom' }
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Marc & Cécile — Opticien à Cambrai">
+
+	<section class="relative h-[60vh] w-full overflow-hidden">
+		<!-- Image + mask -->
+		<img
+				src="/public/images/lunettes.jpg"
+				alt="Showroom Marc & Cécile"
+				class="absolute inset-0 w-full h-full object-cover"
+		/>
+		<div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
+
+		<!-- Contenu -->
+		<div class="relative z-10 flex items-center justify-center h-full container-max">
+			<div class="max-w-2xl text-center text-white">
+				<h1 class="text-5xl font-display mb-4 drop-shadow-lg">Marc & Cécile</h1>
+				<p class="text-lg text-white/90 mb-6">Opticien artisan lunetier — showroom stylisé et fabrication sur-mesure au cœur de Cambrai.</p>
+				<a href="/contact" class="btn-primary">Prendre rendez-vous</a>
+			</div>
+		</div>
+	</section>
+
+
+
+
+
+	<section class="container-max py-12 grid gap-8 grid-cols-1 md:grid-cols-2 items-stretch">
+		<div class="rounded-lg p-6 bg-[var(--color-primary)/10] shadow-md-strong">
+			<h2 class="text-2xl font-semibold text-[var(--color-secondary)] mb-3">Showroom stylisé</h2>
+			<p class="text-gray-700 mb-4">Un espace inspirant avec des couleurs vives, conçu pour que vous puissiez essayer nos montures dans les meilleures conditions.</p>
+			<img src="https://images.unsplash.com/photo-1503602642458-232111445657?q=80&w=1200&auto=format&fit=crop" alt="Showroom" class="w-full h-48 object-cover rounded-md"/>
+		</div>
+
+		<div class="rounded-lg p-6 bg-white shadow-md-strong">
+			<h2 class="text-2xl font-semibold text-[var(--color-secondary)] mb-3">Salle d’examen</h2>
+			<p class="text-gray-700 mb-4">Salle d’examen équipée pour mesurer et suivre la santé visuelle, dans un cadre rassurant et professionnel.</p>
+			<img src="https://images.unsplash.com/photo-1588776814546-1b2c6f2a4d22?q=80&w=1200&auto=format&fit=crop" alt="Examen vue" class="w-full h-48 object-cover rounded-md"/>
+		</div>
+	</section>
+
+	<section class="container-max py-10">
+		<h3 class="text-3xl text-center font-bold text-[var(--color-secondary)] mb-6">Nos marques partenaires</h3>
+		<Carousel images={brandImages} />
+	</section>
+
+	<section class="container-max py-10 text-center">
+		<p class="text-lg text-gray-700 mb-6">Envie d'un style unique ? Passez à l'atelier pour une création sur mesure.</p>
+		<a href="/atelier" class="btn-secondary">Découvrir l'atelier</a>
+	</section>
 </Layout>

@@ -1,0 +1,60 @@
+<header id="siteHeader" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+  <div id="headerContainer" class="container-max flex items-center justify-between h-24 transition-all duration-300">
+    <a href="/" class="flex items-center gap-3">
+      <div class="w-24 h-24 margin-top-1">
+        <img src="/images/logo.svg" alt="Marc & Cécile" class="w-full h-full object-contain"/>
+      </div>
+      <!-- Légende -->
+      <div class="hidden sm:flex flex-col justify-center">
+        <div class="text-xs text-white/80">Artisan lunetier & Opticien</div>
+      </div>
+    </a>
+
+    <nav role="navigation" class="hidden md:flex gap-6 text-white font-medium">
+      <a href="/" class="transition hover:text-[var(--color-secondary)] hover:scale-105">Accueil</a>
+      <a href="/atelier" class="transition hover:text-[var(--color-secondary)] hover:scale-105">Atelier</a>
+      <a href="/contact" class="transition hover:text-[var(--color-secondary)] hover:scale-105">Rendez-vous</a>
+    </nav>
+
+    <div class="md:hidden">
+      <button id="navToggle" aria-label="Ouvrir le menu" class="p-2 rounded-md border border-white/30 text-white">
+        <svg width="20" height="20" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobileNav" class="md:hidden hidden border-t border-white/20">
+    <div class="container-max py-4 flex flex-col gap-3 text-white">
+      <a href="/">Accueil</a>
+      <a href="/atelier">Atelier</a>
+      <a href="/contact">Rendez-vous</a>
+    </div>
+  </div>
+
+  <script>
+    const btn = document.getElementById('navToggle');
+    const menu = document.getElementById('mobileNav');
+    const header = document.getElementById('siteHeader');
+    const container = document.getElementById('headerContainer');
+
+    if(btn && menu){
+      btn.addEventListener('click', ()=> menu.classList.toggle('hidden'));
+    }
+
+    // Initial state
+    if(header && container) {
+    header.classList.add('bg-transparent');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.replace('bg-transparent', 'bg-[var(--color-primary)]');
+          container.classList.replace('h-24', 'h-16');
+          header.classList.add('shadow-lg');
+        } else {
+          header.classList.replace('bg-[var(--color-primary)]', 'bg-transparent');
+          container.classList.replace('h-16', 'h-24');
+          header.classList.remove('shadow-lg');
+        }
+      });
+    }
+  </script>
+</header>
