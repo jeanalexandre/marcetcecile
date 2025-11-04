@@ -2,115 +2,160 @@
 import Layout from '../layouts/Layout.astro';
 
 const brandLogos = [
-	{ src: '/marcetcecile/images/marque-theo.png', alt: 'Theo' },
-	{ src: '/marcetcecile/images/marque-police.png', alt: 'Police' },
-	{ src: '/marcetcecile/images/marque-theo.png', alt: 'Theo' },
-	{ src: '/marcetcecile/images/marque-police.png', alt: 'Police' },
-	{ src: '/marcetcecile/images/marque-theo.png', alt: 'Theo' },
-	{ src: '/marcetcecile/images/marque-police.png', alt: 'Police' },
+  {src: '/marcetcecile/images/marque-theo.png', alt: 'Theo'},
+  {src: '/marcetcecile/images/marque-police.png', alt: 'Police'},
+  {src: '/marcetcecile/images/marque-theo.png', alt: 'Theo'},
+  {src: '/marcetcecile/images/marque-police.png', alt: 'Police'},
+  {src: '/marcetcecile/images/marque-theo.png', alt: 'Theo'},
+  {src: '/marcetcecile/images/marque-police.png', alt: 'Police'},
 ];
 ---
 
 <Layout title="Marc & Cécile — Opticien à Cambrai">
-	<!-- === HERO SECTION (inchangée) === -->
-	<section class="relative h-[60vh] w-full overflow-hidden">
-		<img src="/marcetcecile/images/lunettes.jpg" alt="Showroom Marc & Cécile"
-				 class="absolute inset-0 w-full h-full object-cover" />
-		<div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
+  <!-- === HERO SECTION (inchangée) === -->
+  <section class="relative h-[60vh] w-full overflow-hidden">
+    <img src="/marcetcecile/images/lunettes.jpg" alt="Showroom Marc & Cécile"
+         class="absolute inset-0 w-full h-full object-cover"/>
+    <div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
 
-		<div class="relative z-10 flex items-center justify-center h-full container-max">
-			<div class="max-w-2xl text-center text-white">
-				<h1 class="text-5xl font-display mb-4 drop-shadow-lg">Marc & Cécile</h1>
-				<p class="text-lg text-white/90 mb-6">
-					Opticien artisan lunetier — showroom stylisé et fabrication sur-mesure au cœur de Cambrai.
-				</p>
-				<a href="/marcetcecile/contact" class="btn-primary">Prendre rendez-vous</a>
-			</div>
-		</div>
-	</section>
+    <div class="relative z-10 flex items-center justify-center h-full container-max">
+      <div class="max-w-2xl text-center text-white">
+        <h1 class="text-5xl font-display mb-4 drop-shadow-lg">Marc & Cécile</h1>
+        <p class="text-lg text-white/90 mb-6">
+          Opticien artisan lunetier — showroom stylisé et fabrication sur-mesure au cœur de Cambrai.
+        </p>
+        <a href="/marcetcecile/contact" class="btn-primary">Prendre rendez-vous</a>
+      </div>
+    </div>
+  </section>
 
-	<!-- === BANDEAU DE LOGOS (plus fin et aérien) === -->
-	<section
-			class="relative -mt-8 z-20 bg-white/100 backdrop-blur-sm shadow-lg rounded-xl px-8 py-4 mx-auto
+  <!-- === BANDEAU DE LOGOS (plus fin et aérien) === -->
+  <section
+      class="relative -mt-8 z-20 bg-white/100 backdrop-blur-sm shadow-lg rounded-xl px-8 py-4 mx-auto
          flex flex-wrap justify-center items-center gap-10 max-w-3xl">
-		{brandLogos.map(logo => (
-				<img src={logo.src} alt={logo.alt}
-						 class="h-16 w-auto opacity-70 hover:opacity-100 transition" />
-		))}
-	</section>
+    {brandLogos.map(logo => (
+        <img src={logo.src} alt={logo.alt}
+             class="h-16 w-auto opacity-70 hover:opacity-100 transition"/>
+    ))}
+  </section>
 
-	<!-- === SECTIONS ALTERNÉES === -->
-	<div class="container-max">
-		{[
-			{
-				title: 'La boutique',
-				text: `Découvrez un espace lumineux et chaleureux, conçu pour offrir une expérience d’achat agréable et personnalisée. 
+  <main class="relative flex flex-col items-center">
+    <div class="w-full max-w-7xl px-6 md:px-10 xl:px-16">
+      <!-- === SECTIONS ALTERNÉES === -->
+      <div class="container-max">
+        {[
+          {
+            title: 'La boutique',
+            text: `Découvrez un espace lumineux et chaleureux, conçu pour offrir une expérience d’achat agréable et personnalisée. 
                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-				img: '/marcetcecile/images/boutique.png',
-				alt: 'La boutique',
-			},
-			{
-				title: 'Salle d’examen',
-				text: `Une salle d’examen équipée des dernières technologies pour un suivi précis de votre santé visuelle. 
+            img: '/marcetcecile/images/boutique.png',
+            alt: 'La boutique',
+          },
+          {
+            title: 'Salle d’examen',
+            text: `Une salle d’examen équipée des dernières technologies pour un suivi précis de votre santé visuelle. 
                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-				img: '/marcetcecile/images/salle-exam.png',
-				alt: 'Salle d’examen',
-			},
-			{
-				title: 'L’équipe',
-				text: `Une équipe d’artisans lunetiers passionnés et à l’écoute, formés pour vous conseiller et ajuster chaque monture 
+            img: '/marcetcecile/images/salle-exam.png',
+            alt: 'Salle d’examen',
+          },
+          {
+            title: 'L’équipe',
+            text: `Une équipe d’artisans lunetiers passionnés et à l’écoute, formés pour vous conseiller et ajuster chaque monture 
                à votre visage. Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
-				img: '/marcetcecile/images/team.png',
-				alt: 'Équipe Marc & Cécile',
-			},
-			{
-				title: 'Nos marques',
-				text: `Nous collaborons avec les plus grandes marques de lunetterie, mêlant design, innovation et savoir-faire artisanal. 
+            img: '/marcetcecile/images/team.png',
+            alt: 'Équipe Marc & Cécile',
+          },
+          {
+            title: 'Nos marques',
+            text: `Nous collaborons avec les plus grandes marques de lunetterie, mêlant design, innovation et savoir-faire artisanal. 
                Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
-				img: '/marcetcecile/images/lunettes-2.png',
-				alt: 'Marques partenaires',
-			},
-		].map((section, index) => (
-				<section
-						class="py-16 flex flex-col md:flex-row items-center gap-10 md:[&:nth-child(even)]:flex-row-reverse">
-					<div class="flex-1">
-						<h2 class="text-3xl font-bold text-[var(--color-secondary)] mb-4">{section.title}</h2>
-						<p class="text-gray-700 leading-relaxed">{section.text}</p>
-					</div>
-					<img src={section.img} alt={section.alt}
-							 class="flex-1 w-full h-80 object-cover rounded-lg shadow-md" />
-				</section>
-		))}
-	</div>
+            img: '/marcetcecile/images/lunettes-2.png',
+            alt: 'Marques partenaires',
+          },
+        ].map((section, index) => (
+            <section
+                class="py-16 flex flex-col md:flex-row items-center gap-10 md:[&:nth-child(even)]:flex-row-reverse">
 
-	<section class="py-16 bg-[var(--color-primary)/5]">
-		<div class="container-max grid gap-12 md:grid-cols-2 items-center">
-			<!-- Texte / adresse -->
-			<div class="flex flex-col gap-4">
-				<h2 class="text-3xl font-bold text-[var(--color-secondary)] mb-2">Notre boutique</h2>
-				<p class="text-gray-700 leading-relaxed">
-					12 Rue de l’Optique<br />
-					59400 Cambrai<br />
-					France
-				</p>
-				<p class="text-gray-700">
-					Horaires :<br />
-					Lundi - Vendredi : 9h - 18h<br />
-					Samedi : 10h - 16h
-				</p>
-				<a href="https://maps.app.goo.gl/ADMNBrK8LL8rerjSA"
-					 target="_blank"
-					 class="btn-secondary mt-4 inline-block w-max"
-				>
-					Voir sur Google Maps
-				</a>
-			</div>
+              <!-- Bloc texte centré -->
+              <div class="flex-1 text-center flex flex-col items-center justify-center">
+                <h2 class="text-3xl font-bold text-[var(--color-secondary)] mb-4">{section.title}</h2>
+                <p class="text-gray-700 leading-relaxed max-w-prose">{section.text}</p>
+              </div>
 
-			<!-- Carte Google Map -->
-			<div class="w-full h-80 md:h-96 rounded-lg shadow-md overflow-hidden">
-				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.3088747085694!2d3.2312529765528955!3d50.17406100722598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2bb25846bdc77%3A0x2160eb5f42a18130!2sMARC%26CECILE%20-%20OPTICIENS!5e0!3m2!1sfr!2sfr!4v1762286124829!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-			</div>
-		</div>
-	</section>
+              <!-- Image -->
+              <img src={section.img} alt={section.alt}
+                   class="flex-1 w-full h-80 object-cover rounded-lg shadow-md"/>
+            </section>
+        ))}
+      </div>
+
+      <section class="relative bg-[var(--color-primary)/10] py-32 md:py-40 overflow-hidden">
+        <!-- Décoration subtile en background -->
+        <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-[var(--color-primary)/5] pointer-events-none"></div>
+
+        <div class="container-max grid gap-16 md:grid-cols-2 items-center relative z-10">
+
+          <!-- Texte / adresse -->
+          <div class="flex flex-col gap-6">
+            <h2 class="text-4xl font-bold text-[var(--color-secondary)] mb-2">Notre boutique</h2>
+            <p class="text-gray-700 text-lg leading-relaxed">
+              <span class="font-semibold">Marc & Cécile Opticiens</span><br/>
+              23 Av. de la Victoire<br/>
+              59400 Cambrai<br/>
+              France
+            </p>
+            <p class="text-gray-600 text-base">
+              Horaires :<br/>
+              Lundi - Vendredi : 9h - 18h<br/>
+              Samedi : 10h - 16h
+            </p>
+
+            <div class="flex flex-wrap gap-4 items-center mt-4">
+              <a href="tel:+33312345678"
+                 class="inline-flex items-center gap-2 text-[var(--color-secondary)] hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 5h2l2 7-2 4 5 5 4-2 7 2v2a2 2 0 01-2 2h-2a19 19 0 01-14-14V5z"/>
+                </svg>
+                +33 3 12 34 56 78
+              </a>
+              <a href="mailto:contact@marcetcecile.fr"
+                 class="inline-flex items-center gap-2 text-[var(--color-secondary)] hover:underline">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                     stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M16 12h2a2 2 0 012 2v6H4v-6a2 2 0 012-2h2m4-4v4m0 0l-4-4m4 4l4-4"/>
+                </svg>
+                contact@marcetcecile.fr
+              </a>
+            </div>
+
+            <a href="https://maps.app.goo.gl/ADMNBrK8LL8rerjSA"
+               target="_blank"
+               class="btn-secondary mt-6 w-max inline-flex items-center gap-2 transition hover:scale-105">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M17.657 16.657L13.414 12.414a4 4 0 10-5.657 5.657l4.243 4.243a4 4 0 005.657-5.657z"/>
+              </svg>
+              Voir sur Google Maps
+            </a>
+          </div>
+
+          <!-- Carte Google Map -->
+          <div class="w-full h-96 md:h-[32rem] rounded-2xl shadow-2xl overflow-hidden border border-white/20">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2555.3088747085694!2d3.2312529765528955!3d50.17406100722598!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2bb25846bdc77%3A0x2160eb5f42a18130!2sMARC%26CECILE%20-%20OPTICIENS!5e0!3m2!1sfr!2sfr!4v1762286124829!5m2!1sfr!2sfr"
+                width="100%" height="100%" class="border-0"
+                allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+
+        </div>
+      </section>
+    </div>
+  </main>
+
 
 </Layout>
