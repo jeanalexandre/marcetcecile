@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # Pour les packages JS/TS gérés par npm.
+  - package-ecosystem: "npm"
+    directory: "/" # racine du projet
+    schedule:
+      interval: "weekly"
+
+  # Pour les actions GitHub utilisées dans tes workflows
+  - package-ecosystem: "github-actions"
+    directory: "/" # racine où se trouvent les .github/workflows
+    schedule:
+      interval: "weekly"
