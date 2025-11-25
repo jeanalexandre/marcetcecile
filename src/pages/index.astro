@@ -33,7 +33,14 @@ const imagePaths = [
         <p class="text-lg text-white/90 mb-6">
           Opticien artisan lunetier — showroom stylisé et fabrication sur-mesure au cœur de Cambrai.
         </p>
-        <a href="/marcetcecile/contact" class="btn-primary">Prendre rendez-vous</a>
+        <!--<a href="/marcetcecile/contact" class="btn-primary">Prendre rendez-vous</a>-->
+        <!-- Début de widget de lien Calendly -->
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+        <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+        <a href=""
+           onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marc-et-cecile/30min?hide_event_type_details=1'});return false;">Prendre
+          rendez-vous</a>
+        <!-- Fin de widget de lien Calendly -->
       </div>
     </div>
   </section>
