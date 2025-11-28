@@ -55,9 +55,21 @@
         <a href="/marcetcecile/contact" class="block w-full text-center py-3 hover:bg-white/10 transition">
           Rendez-vous
         </a>
+        <!-- Icônes Réseaux sociaux Mobile -->
+        <div class="flex justify-center gap-6 mt-4">
+          <a href="https://www.facebook.com/p/Marc-et-C%C3%A9cile-61575878759493/" aria-label="Facebook" target="_blank" rel="noopener" class="hover:text-[var(--color-secondary)] transition">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M22 12a10 10 0 1 0-11.5 9.89v-7h-2v-2.89h2V10.4c0-2 1.1-3.1 2.8-3.1.8 0 1.7.1 1.7.1v2h-1c-1 0-1.3.6-1.3 1.2v1.4h2.7l-.4 2.89h-2.3v7A10 10 0 0 0 22 12z"/>
+            </svg>
+          </a>
+          <a href="https://www.instagram.com/marc_et_cecile?fbclid=IwY2xjawOW5I1leHRuA2FlbQIxMABicmlkETFhSUdENlk1eDFJc3pLRnBXc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHuaFXHxhYdq7Ne6A_2accX8BN1rVD89qenMqVw8arh3xDQmWIOu6GSizBJdS_aem_ffp6p_GeDSeC1qB5oLRbuw" aria-label="Instagram" target="_blank" rel="noopener" class="hover:text-[var(--color-secondary)] transition">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7.1a4.9 4.9 0 1 1 0 9.8 4.9 4.9 0 0 1 0-9.8zm0 1.5a3.4 3.4 0 1 0 0 6.8 3.4 3.4 0 0 0 0-6.8zm5.35-.85a1.05 1.05 0 1 1 2.1 0 1.05 1.05 0 0 1-2.1 0z"/>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
-
 
     <script>
       const btn = document.getElementById('navToggle');
@@ -109,18 +121,17 @@
         });
       }
     </script>
+  </div>
 
+  <style>
+    /* Transition d'ouverture du menu mobile */
+    #mobileNav {
+      transform: translateY(-10px);
+    }
 
+    #mobileNav.open {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </header>
-
-<style>
-  /* Transition d'ouverture du menu mobile */
-  #mobileNav {
-    transform: translateY(-10px);
-  }
-
-  #mobileNav.open {
-    opacity: 1;
-    transform: translateY(0);
-  }
-</style>
