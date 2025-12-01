@@ -14,6 +14,27 @@
   background-color: var(--color-primary);
 }
 
+.btn-glass-white {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(8px);
+  color: var(--color-primary);
+  font-weight: 600;
+  border: none;
+  padding: 0.75em 2em;
+  border-radius: 1.5em;
+  box-shadow: 0 4px 28px 0 rgba(40,52,77,0.08), 0 0.5px 1.5px 0 rgba(0,0,0,0.08);
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+}
+.btn-glass-white:hover,
+.btn-glass-white:focus {
+  background: rgba(255,255,255,0.92);
+  color: var(--color-secondary); /* ou la couleur que tu veux pour hover */
+  box-shadow: 0 8px 36px 0 rgba(40,52,77,0.14), 0 1px 3px 0 rgba(0,0,0,0.12);
+  outline: none;
+}
+
 .container-max {
   max-width: var(--max-w);
   margin-left: auto;

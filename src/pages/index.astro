@@ -2,12 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 
 const brandLogos = [
-  {src: '/marcetcecile/images/marque-theo.png', alt: 'Theo'},
-  {src: '/marcetcecile/images/marque-police.png', alt: 'Police'},
-  {src: '/marcetcecile/images/marque-theo.png', alt: 'Theo'},
-  {src: '/marcetcecile/images/marque-police.png', alt: 'Police'},
-  {src: '/marcetcecile/images/marque-theo.png', alt: 'Theo'},
-  {src: '/marcetcecile/images/marque-police.png', alt: 'Police'},
+  {src: '/marcetcecile/marques/marc-et-cecile.svg', alt: 'C.CILE'},
+  {src: '/marcetcecile/marques/kuboraum.webp', alt: 'Kuboraum'},
+  {src: '/marcetcecile/marques/la-brique-et-la-violette.png', alt: 'La brique et la violette'},
+  {src: '/marcetcecile/marques/theo.png', alt: 'Theo'},
+  {src: '/marcetcecile/marques/xit.png', alt: 'XIT'},
 ];
 
 const imagePaths = [
@@ -38,15 +37,19 @@ const imagePaths = [
         <!-- Début de widget de lien Calendly -->
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
         <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
-        <a href=""
-           onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marc-et-cecile/30min?hide_event_type_details=1'});return false;">Prendre
-          rendez-vous</a>
+        <button
+            type="button"
+            onclick="Calendly.initPopupWidget({url: 'https://calendly.com/marc-et-cecile/30min?hide_event_type_details=1'});return false;"
+            class="btn-glass-white"
+        >
+          Prendre rendez-vous
+        </button>
         <!-- Fin de widget de lien Calendly -->
       </div>
     </div>
   </section>
 
-  <!-- === BANDEAU DE LOGOS (plus fin et aérien) === -->
+  <!-- === BANDEAU DE LOGOS === -->
   <section
       class="relative -mt-8 z-20 bg-white/100 backdrop-blur-sm shadow-lg rounded-xl px-8 py-4 mx-auto
          flex flex-wrap justify-center items-center gap-10 max-w-3xl">
@@ -107,108 +110,156 @@ const imagePaths = [
       </div>
 
 
-      <!--Carrousel d'images - VERSION AMÉLIORÉE-->
-      <section class="w-full flex flex-col items-center justify-center py-8">
-        <h3 class="text-3xl font-bold text-[var(--color-secondary)] mb-4">Nos modèles préférés</h3>
-        <div class="relative w-full max-w-6xl h-[60vh] md:h-[80vh] overflow-hidden rounded-lg shadow-lg bg-white"
-             id="carrousel">
-          {imagePaths.map((src, idx) => (
-              <img
-                  src={src}
-                  alt={"Photo " + (idx + 1)}
-                  class={`carrousel-img absolute inset-0 m-auto object-contain object-center rounded-lg transition-opacity duration-700 ${idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}
-                  style="pointer-events:none;"
-                  data-idx={idx}
-              />
-          ))}
-          {/* Points navigation */}
-          <!-- Fond flou gris glass sous les puces -->
-          <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center">
-            <div
-                class="absolute -inset-x-2 -inset-y-2 bg-white/60 backdrop-blur-sm rounded-xl shadow md:bg-gray-100/80"></div>
-            <div class="relative flex space-x-2 px-4 py-2">
-              {imagePaths.map((_, idx) => (
-                  <span class="block w-3 h-3 rounded-full carrousel-dot bg-gray-400/50" data-dot={idx}></span>))}
-            </div>
-          </div>
-          {/* Boutons navigation */}
-          <button id="prevBtn"
-                  class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 z-20 hover:bg-white">
-            &#8592;
-          </button>
-          <button id="nextBtn"
-                  class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 z-20 hover:bg-white">
-            &#8594;
-          </button>
+      <!--Carrousel d'images-->
+      <!--<section class="w-full flex flex-col items-center justify-center py-8">-->
+      <!--  <h3 class="text-3xl font-bold text-[var(&#45;&#45;color-secondary)] mb-4">Nos modèles préférés</h3>-->
+      <!--  <div class="relative w-full max-w-6xl h-[60vh] md:h-[80vh] overflow-hidden rounded-lg shadow-lg bg-white"-->
+      <!--       id="carrousel">-->
+      <!--    {imagePaths.map((src, idx) => (-->
+      <!--        <img-->
+      <!--            src={src}-->
+      <!--            alt={"Photo " + (idx + 1)}-->
+      <!--            class={`carrousel-img absolute inset-0 m-auto object-contain object-center rounded-lg transition-opacity duration-700 ${idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}-->
+      <!--            style="pointer-events:none;"-->
+      <!--            data-idx={idx}-->
+      <!--        />-->
+      <!--    ))}-->
+      <!--    {/* Points navigation */}-->
+      <!--    &lt;!&ndash; Fond flou gris glass sous les puces &ndash;&gt;-->
+      <!--    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center">-->
+      <!--      <div-->
+      <!--          class="absolute -inset-x-2 -inset-y-2 bg-white/60 backdrop-blur-sm rounded-xl shadow md:bg-gray-100/80"></div>-->
+      <!--      <div class="relative flex space-x-2 px-4 py-2">-->
+      <!--        {imagePaths.map((_, idx) => (-->
+      <!--            <span class="block w-3 h-3 rounded-full carrousel-dot bg-gray-400/50" data-dot={idx}></span>))}-->
+      <!--      </div>-->
+      <!--    </div>-->
+      <!--    {/* Boutons navigation */}-->
+      <!--    <button id="prevBtn"-->
+      <!--            class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 z-20 hover:bg-white">-->
+      <!--      &#8592;-->
+      <!--    </button>-->
+      <!--    <button id="nextBtn"-->
+      <!--            class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 z-20 hover:bg-white">-->
+      <!--      &#8594;-->
+      <!--    </button>-->
+      <!--  </div>-->
+      <!--  <style>-->
+      <!--    /* Adaptation de la hauteur du carrousel à l'écran mobile */-->
+      <!--    @media (max-width: 640px) {-->
+      <!--      #carrousel {-->
+      <!--        height: auto !important;-->
+      <!--        min-height: 220px;-->
+      <!--        max-height: 320px;-->
+      <!--        display: flex;-->
+      <!--        align-items: center;-->
+      <!--        justify-content: center;-->
+      <!--      }-->
+      <!--    }-->
+
+      <!--    #carrousel .carrousel-img {-->
+      <!--      object-fit: contain !important;-->
+      <!--      max-width: 100%;-->
+      <!--      max-height: 100%;-->
+      <!--      width: auto;-->
+      <!--      height: auto;-->
+      <!--      background: #ffffff;-->
+      <!--    }-->
+      <!--  </style>-->
+      <!--  <script type="module" is:inline>-->
+      <!--    const images = document.querySelectorAll("#carrousel .carrousel-img");-->
+      <!--    const dots = document.querySelectorAll("#carrousel .carrousel-dot");-->
+      <!--    let current = 0;-->
+      <!--    const interval = 3000;-->
+
+      <!--    function show(idx) {-->
+      <!--      images.forEach((img, i) => {-->
+      <!--        img.classList.toggle('opacity-100', i === idx);-->
+      <!--        img.classList.toggle('z-10', i === idx);-->
+      <!--        img.classList.toggle('opacity-0', i !== idx);-->
+      <!--        img.classList.toggle('z-0', i !== idx);-->
+      <!--      });-->
+      <!--      dots.forEach((dot, i) => {-->
+      <!--        dot.classList.toggle('bg-[var(&#45;&#45;color-primary)]', i === idx);-->
+      <!--        dot.classList.toggle('bg-gray-400/50', i !== idx);-->
+      <!--      });-->
+      <!--    }-->
+
+      <!--    function next() {-->
+      <!--      current = (current + 1) % images.length;-->
+      <!--      show(current);-->
+      <!--    }-->
+
+      <!--    function prev() {-->
+      <!--      current = (current - 1 + images.length) % images.length;-->
+      <!--      show(current);-->
+      <!--    }-->
+
+      <!--    // interval automatique-->
+      <!--    let auto = setInterval(next, interval);-->
+
+      <!--    // Boutons navigation-->
+      <!--    document.getElementById("prevBtn").addEventListener("click", () => {-->
+      <!--      clearInterval(auto);-->
+      <!--      prev();-->
+      <!--      auto = setInterval(next, interval);-->
+      <!--    });-->
+      <!--    document.getElementById("nextBtn").addEventListener("click", () => {-->
+      <!--      clearInterval(auto);-->
+      <!--      next();-->
+      <!--      auto = setInterval(next, interval);-->
+      <!--    });-->
+
+      <!--    show(current);-->
+      <!--  </script>-->
+      <!--</section>-->
+
+      <!-- Section Réseaux Sociaux -->
+      <section class="flex flex-col items-center justify-center py-14">
+        <h2 class="text-3xl font-bold text-[var(--color-secondary)] mb-6">
+          Suivez-nous sur les réseaux&nbsp;!
+        </h2>
+        <div class="flex flex-row gap-16 items-center mb-8">
+          <!-- Icône Facebook -->
+          <a
+              href="https://www.facebook.com/p/Marc-et-C%C3%A9cile-61575878759493/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook Marc et Cécile"
+              class="group hover:scale-110 transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                 class="w-16 h-16 text-[#1877f3] group-hover:text-[var(--color-secondary)] transition">
+              <path
+                  d="M22.675 0h-21.35C.598 0 0 .598 0 1.326v21.348C0 23.402.598 24 1.326 24h11.495V14.709h-3.13v-3.637h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.142v3.24h-1.918c-1.504 0-1.797.715-1.797 1.763v2.31h3.587l-.467 3.637h-3.12V24h6.116C23.402 24 24 23.402 24 22.674V1.326C24 .598 23.402 0 22.675 0"/>
+            </svg>
+          </a>
+
+          <!-- Icône Instagram -->
+          <a
+              href="https://www.instagram.com/marc_et_cecile/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram Marc et Cécile"
+              class="group hover:scale-110 transition"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"
+                 class="w-16 h-16 text-[#e1306c] group-hover:text-[var(--color-secondary)] transition">
+              <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 1.206.058 1.793.25 2.216.415a4.602 4.602 0 0 1 1.604.965c.423.423.748.944.965 1.604.165.423.357 1.01.415 2.216.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.058 1.206-.25 1.793-.415 2.216a4.602 4.602 0 0 1-.965 1.604c-.423.423-.944.748-1.604.965-.423.165-1.01.357-2.216.415-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.206-.058-1.793-.25-2.216-.415a4.602 4.602 0 0 1-1.604-.965 4.602 4.602 0 0 1-.965-1.604c-.165-.423-.357-1.01-.415-2.216C2.175 15.797 2.163 15.417 2.163 12s.012-3.584.07-4.85c.058-1.206.25-1.793.415-2.216a4.602 4.602 0 0 1 .965-1.604A4.602 4.602 0 0 1 5.217 2.648c.423-.165 1.01-.357 2.216-.415C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.012 7.052.07 5.775.128 4.833.316 4.057.55a6.875 6.875 0 0 0-2.487 1.133A6.875 6.875 0 0 0 .55 4.057C.316 4.833.128 5.775.07 7.052.012 8.332 0 8.741 0 12c0 3.259.012 3.668.07 4.948.058 1.277.246 2.219.48 2.995a6.875 6.875 0 0 0 1.133 2.487c.392.392.847.74 1.349.992a6.875 6.875 0 0 0 2.487 1.133c.776.234 1.718.422 2.995.48C8.332 23.988 8.741 24 12 24c3.259 0 3.668-.012 4.948-.07 1.277-.058 2.219-.246 2.995-.48a6.875 6.875 0 0 0 2.487-1.133 6.875 6.875 0 0 0 1.133-2.487c.234-.776.422-1.718.48-2.995.058-1.28.07-1.689.07-4.948 0-3.259-.012-3.668-.07-4.948-.058-1.277-.246-2.219-.48-2.995a6.875 6.875 0 0 0-1.133-2.487A6.875 6.875 0 0 0 19.943.55c-.776-.234-1.718-.422-2.995-.48C15.668.012 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.999 3.999 3.999 0 0 1 0 7.999zm6.406-11.845a1.44 1.44 0 1 0 0 2.882 1.44 1.44 0 0 0 0-2.882z"/>
+            </svg>
+          </a>
         </div>
-        <style>
-          /* Adaptation de la hauteur du carrousel à l'écran mobile */
-          @media (max-width: 640px) {
-            #carrousel {
-              height: auto !important;
-              min-height: 220px;
-              max-height: 320px;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-            }
-          }
-
-          #carrousel .carrousel-img {
-            object-fit: contain !important;
-            max-width: 100%;
-            max-height: 100%;
-            width: auto;
-            height: auto;
-            background: #ffffff;
-          }
-        </style>
-        <script type="module" is:inline>
-          const images = document.querySelectorAll("#carrousel .carrousel-img");
-          const dots = document.querySelectorAll("#carrousel .carrousel-dot");
-          let current = 0;
-          const interval = 3000;
-
-          function show(idx) {
-            images.forEach((img, i) => {
-              img.classList.toggle('opacity-100', i === idx);
-              img.classList.toggle('z-10', i === idx);
-              img.classList.toggle('opacity-0', i !== idx);
-              img.classList.toggle('z-0', i !== idx);
-            });
-            dots.forEach((dot, i) => {
-              dot.classList.toggle('bg-[var(--color-primary)]', i === idx);
-              dot.classList.toggle('bg-gray-400/50', i !== idx);
-            });
-          }
-
-          function next() {
-            current = (current + 1) % images.length;
-            show(current);
-          }
-
-          function prev() {
-            current = (current - 1 + images.length) % images.length;
-            show(current);
-          }
-
-          // interval automatique
-          let auto = setInterval(next, interval);
-
-          // Boutons navigation
-          document.getElementById("prevBtn").addEventListener("click", () => {
-            clearInterval(auto);
-            prev();
-            auto = setInterval(next, interval);
-          });
-          document.getElementById("nextBtn").addEventListener("click", () => {
-            clearInterval(auto);
-            next();
-            auto = setInterval(next, interval);
-          });
-
-          show(current);
-        </script>
+        <!-- LightWidget Instagram dans une card-->
+        <div class="w-full sm:max-w-md bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center">
+          <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
+          <iframe src="//lightwidget.com/widgets/dad7cc62db915d32910aab6a19614f6f.html"
+                  scrolling="no"
+                  allowtransparency="true"
+                  class="lightwidget-widget w-full"
+                  style="border:0;overflow:hidden;min-height:400px;border-radius:1rem;">
+          </iframe>
+        </div>
       </section>
 
       <section class="relative bg-[var(--color-primary)/10] py-32 md:py-40 overflow-hidden">
@@ -227,9 +278,12 @@ const imagePaths = [
               France
             </p>
             <p class="text-gray-600 text-base">
-              Ouvert du Lundi au Samedi<br/>
+              Ouvert le Lundi après-midi<br/>
+              13h30 - 19h00<br/><br/>
+              Du Mardi au Samedi<br/>
               10h00 - 12h30<br/>
-              13h30 - 19h00<br/>
+              13h30 - 19h00<br/><br/>
+              Fermé le Dimanche et les jours fériés.
             </p>
 
             <div class="flex flex-wrap gap-4 items-center mt-4">
@@ -275,64 +329,6 @@ const imagePaths = [
           </div>
 
         </div>
-      </section>
-
-      <section>
-        <h3 class="text-3xl font-bold text-[var(--color-secondary)] mb-4 text-center">Suivez-nous sur les réseaux</h3>
-        <div class="socials-row">
-          <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fp%2FMarc-et-C%25C3%25A9cile-61575878759493%2F&tabs=timeline&width=500&height=500&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="500" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-          <!-- LightWidget WIDGET --><script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script><iframe src="//lightwidget.com/widgets/dad7cc62db915d32910aab6a19614f6f.html" scrolling="no" allowtransparency="true" class="lightwidget-widget" style="width:100%;border:0;overflow:hidden;"></iframe>
-        </div>
-        <style>
-          .socials-row {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: stretch;
-            gap: 40px;
-            padding: 24px 0;
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-          }
-          .social-iframe {
-            flex: 1 1 420px;
-            min-width: 280px;
-            max-width: 600px;
-            height: 380px;
-            border-radius: 12px;
-            background: #fff;
-            box-shadow: 0 4px 32px 0 #0001;
-            display: block;
-            margin: 0 auto;
-            /* Pour harmoniser le rendu sur tout type d'écran */
-            transition: box-shadow 0.2s;
-          }
-          @media (max-width: 900px) {
-            .socials-row {
-              gap: 24px;
-              padding: 8px 0;
-            }
-            .social-iframe {
-              max-width: 100%;
-              height: 320px;
-            }
-          }
-          @media (max-width: 600px) {
-            .socials-row {
-              flex-direction: column;
-              align-items: center;
-              gap: 20px;
-              padding: 0;
-            }
-            .social-iframe {
-              width: 100% !important;
-              max-width: 370px;
-              min-width: 0;
-              height: 260px;
-            }
-          }
-        </style>
       </section>
     </div>
   </main>
