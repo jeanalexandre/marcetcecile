@@ -42,52 +42,6 @@
   padding-left: 1rem;
   padding-right: 1rem;
 }
-.halo-container {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.halo {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 1;
-  mix-blend-mode: lighten;
-  will-change: transform;
-}
-
-/* Halo 1 : turquoise */
-.halo1 {
-  width: 1500px;
-  height: 1500px;
-  background: rgba(14, 40, 163, 0.5);
-  top: 20%;
-  left: -50%;
-  animation: float1 20s ease-in-out infinite alternate;
-}
-
-/* Halo 2 : bleu doux */
-.halo2 {
-  width: 1500px;
-  height: 1500px;
-  background: rgba(14, 40, 163, 0.5);
-  top: 10%;
-  left: 60%;
-  animation: float3 20s ease-in-out infinite alternate;
-}
-
-/* Halo 3 : blanc chaud */
-.halo3 {
-  width: 1000px;
-  height: 1000px;
-  background: rgba(14, 40, 163, 0.5);
-  top: 10%;
-  left: 20%;
-  animation: float2 5s ease-in-out infinite alternate;
-}
 
 /* Animations visibles et naturelles */
 @keyframes float1 {
