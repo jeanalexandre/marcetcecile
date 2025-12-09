@@ -2,25 +2,26 @@
 <script>
   const gridId = "background-grid";
   const svgs = [
-    '/marcetcecile/brand/checkerboard.svg',
-    '/marcetcecile/brand/checkerboard-2.svg',
+    '/marcetcecile/brand/multi-waves.svg',
+    '/marcetcecile/brand/waves.svg',
     '/marcetcecile/brand/circle.svg',
     '/marcetcecile/brand/dome.svg',
     '/marcetcecile/brand/multi-wave-2.svg',
+    '/marcetcecile/brand/checkerboard.svg',
+    '/marcetcecile/brand/double-eyes.svg',
+    '/marcetcecile/brand/checkerboard-2.svg',
     '/marcetcecile/brand/dots.svg',
     '/marcetcecile/brand/dots-2.svg',
-    '/marcetcecile/brand/multi-waves.svg',
-    '/marcetcecile/brand/double-eyes.svg',
     '/marcetcecile/brand/eye.svg',
     '/marcetcecile/brand/half-o.svg',
     '/marcetcecile/brand/logo-2.svg',
     '/marcetcecile/brand/logo-3.svg',
     '/marcetcecile/brand/sparkle.svg',
-    '/marcetcecile/brand/waves.svg',
   ];
   const cols = 7;
   const rowHeight = 180;
   const showChance = 0.40;
+  const largeChance = 0.20; // 20% de chances qu'une image soit grande
 
   function makeGrid() {
     const gridBg = document.getElementById(gridId);
@@ -39,13 +40,17 @@
     for (let r = 0; r < rowsNeeded; r++) {
       gridMap[r] = [];
       for (let c = 0; c < cols; c++) {
-        const left = c > 0 && gridMap[r][c-1] !== null && gridMap[r][c-1] !== undefined;
-        const up = r > 0 && gridMap[r-1][c] !== null && gridMap[r-1][c] !== undefined;
+        const left = c > 0 && gridMap[r][c - 1] !== null && gridMap[r][c - 1] !== undefined;
+        const up = r > 0 && gridMap[r - 1][c] !== null && gridMap[r - 1][c] !== undefined;
         if (left || up) {
           gridMap[r][c] = null;
         } else {
           if (Math.random() < showChance) {
-            gridMap[r][c] = svgs[imgIndex % svgs.length];
+            // Ajout du booléen isLarge
+            gridMap[r][c] = {
+              src: svgs[imgIndex % svgs.length],
+              isLarge: Math.random() < largeChance
+            };
             imgIndex++;
           } else {
             gridMap[r][c] = null;
@@ -57,16 +62,21 @@
     gridBg.innerHTML = '';
     gridBg.style.gridTemplateRows = `repeat(${rowsNeeded}, ${rowHeight}px)`;
 
-    for(let r = 0; r < rowsNeeded; r++) {
-      for(let c = 0; c < cols; c++) {
+    for (let r = 0; r < rowsNeeded; r++) {
+      for (let c = 0; c < cols; c++) {
         const cell = document.createElement('div');
         cell.className = 'cell';
-        cell.style.gridRow = (r+1);
-        cell.style.gridColumn = (c+1);
-        if(gridMap[r][c] !== null) {
+        cell.style.gridRow = (r + 1);
+        cell.style.gridColumn = (c + 1);
+        const cellData = gridMap[r][c];
+        if (cellData !== null) {
           const img = document.createElement('img');
-          img.src = gridMap[r][c];
+          img.src = typeof cellData === 'object' ? cellData.src : cellData;
           img.alt = "Background logo";
+
+          // Appliquer une classe spéciale si image agrandie
+          if (cellData && cellData.isLarge) img.classList.add('cell__img--large');
+
           cell.appendChild(img);
         }
         gridBg.appendChild(cell);
@@ -89,7 +99,9 @@
 <style>
   .background-grid {
     position: fixed;
-    top: 0; left: 0; right: 0;
+    top: 0;
+    left: 0;
+    right: 0;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -98,23 +110,43 @@
     gap: 64px;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.13;
+    opacity: 0.1;
     will-change: transform;
   }
+
   .cell img {
     width: 56px;
     height: 56px;
     opacity: 0.18;
     filter: grayscale(1);
   }
+
+  .cell__img--large {
+    width: 120px;
+    height: 120px;
+    opacity: 0.28;
+    filter: grayscale(0.6);
+    /* Optionnel: pour que la grosse image dépasse la cellule */
+    z-index: 1;
+    position: relative;
+  }
+
   @media (max-width: 800px) {
     .background-grid {
       grid-template-columns: repeat(4, 1fr);
       gap: 36px;
     }
+
     .cell img {
       width: 32px;
       height: 32px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .cell__img--large {
+      width: 60px;
+      height: 60px;
     }
   }
 </style>
