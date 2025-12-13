@@ -6,46 +6,46 @@ const steps = [
     icon: "message-circle",
     title: "Rencontre & étude du besoin",
     description: "Un premier échange afin d'échanger autour de votre besoin, de vos goûts et préférences, prise de mesures et définition du style.",
-    img: "/marcetcecile/images/etude-besoin.png",
+    img: "/images/etude-besoin.png",
   },
   {
     icon: "3d-printer",
     title: "Prototype 3D",
     description: "Création et impression d’un prototype 3D pour valider la forme et la taille de la monture.",
-    img: "/marcetcecile/images/printer.png",
+    img: "/images/printer.png",
   },
   {
     icon: "materials",
     title: "Choix des matériaux",
     description: "Sélection parmis un large choix de matériaux pour la façade et les branche de votre futur paire de lunettes, aux finitions colorées et adaptées à vos envies.",
-    img: "/marcetcecile/images/acetate.png",
+    img: "/images/acetate.png",
   },
   {
     icon: "gear",
     title: "Fabrication artisanale",
     description: "Découpe, polissage, assemblage et contrôle qualité par nos soins dans notre atelier !",
-    img: "/marcetcecile/images/craft.png",
+    img: "/images/craft.png",
   },
   {
     icon: "glasses",
     title: "Réglages & réception",
     description: "Ajustements et contrôle final pour un confort optimal avant que vous ne preniez réception de votre nouvelle paire de lunettes unique.",
-    img: "/marcetcecile/images/reglage.png",
+    img: "/images/reglage.png",
   },
 ];
 
 function getIcon(icon) {
   switch (icon) {
    case "message-circle":
-      return `<img src="/marcetcecile/icons/message-circle.svg" alt="Bulle" class="h-8 w-8 inline-block align-middle" />`;
+      return `<img src="/icons/message-circle.svg" alt="Bulle" class="h-8 w-8 inline-block align-middle" />`;
     case "3d-printer":
-      return `<img src="/marcetcecile/icons/3d-printer.svg" alt="Imprimante 3D" class="h-8 w-8 inline-block align-middle" />`;
+      return `<img src="/icons/3d-printer.svg" alt="Imprimante 3D" class="h-8 w-8 inline-block align-middle" />`;
       case "materials":
-      return `<img src="/marcetcecile/icons/materials.svg" alt="Plaques" class="h-8 w-8 inline-block align-middle" />`;
+      return `<img src="/icons/materials.svg" alt="Plaques" class="h-8 w-8 inline-block align-middle" />`;
     case "gear":
-      return `<img src="/marcetcecile/icons/gear.svg" alt="Engenage" class="h-8 w-8 inline-block align-middle" />`;
+      return `<img src="/icons/gear.svg" alt="Engenage" class="h-8 w-8 inline-block align-middle" />`;
     case "glasses":
-      return `<img src="/marcetcecile/icons/glasses.svg" alt="Lunettes" class="h-8 w-8 inline-block align-middle" />`;
+      return `<img src="/icons/glasses.svg" alt="Lunettes" class="h-8 w-8 inline-block align-middle" />`;
     default:
       return "";
   }
@@ -54,7 +54,7 @@ function getIcon(icon) {
 <Layout title="Atelier sur mesure — Marc & Cécile">
   <!-- === HERO SECTION (inchangée) === -->
   <section class="relative h-[60vh] w-full overflow-hidden">
-    <img src="/marcetcecile/images/atelier.png" alt="Showroom Marc & Cécile"
+    <img src="/images/atelier.png" alt="Showroom Marc & Cécile"
          class="absolute inset-0 w-full h-full object-cover"/>
     <div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
 

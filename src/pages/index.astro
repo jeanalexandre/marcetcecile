@@ -2,29 +2,29 @@
 import Layout from '../layouts/Layout.astro';
 
 const brandLogos = [
-  {src: '/marcetcecile/marques/marc-et-cecile.svg', alt: 'C.CILE'},
-  {src: '/marcetcecile/marques/kuboraum.webp', alt: 'Kuboraum'},
-  {src: '/marcetcecile/marques/la-brique-et-la-violette.png', alt: 'La brique et la violette'},
-  {src: '/marcetcecile/marques/theo.png', alt: 'Theo'},
-  {src: '/marcetcecile/marques/xit.png', alt: 'XIT'},
-  {src: '/marcetcecile/marques/very-french-gangsters.png', alt: 'XIT'},
+  {src: '/marques/marc-et-cecile.svg', alt: 'C.CILE'},
+  {src: '/marques/kuboraum.webp', alt: 'Kuboraum'},
+  {src: '/marques/la-brique-et-la-violette.png', alt: 'La brique et la violette'},
+  {src: '/marques/theo.png', alt: 'Theo'},
+  {src: '/marques/xit.png', alt: 'XIT'},
+  {src: '/marques/very-french-gangsters.png', alt: 'XIT'},
 ];
 
 const separatorSvgs = [
-  // '/marcetcecile/brand/multi-waves.svg',
-  '/marcetcecile/brand/checkerboard-2.svg',
-  '/marcetcecile/brand/half-o.svg',
-  '/marcetcecile/brand/double-eyes.svg',
-  '/marcetcecile/brand/circle.svg',
-  '/marcetcecile/brand/dome.svg',
-  '/marcetcecile/brand/dots-2.svg',
-  '/marcetcecile/brand/dots.svg',
-  '/marcetcecile/brand/eye.svg',
-  '/marcetcecile/brand/logo-2.svg',
-  '/marcetcecile/brand/logo-3.svg',
-  '/marcetcecile/brand/multi-wave-2.svg',
-  '/marcetcecile/brand/sparkle.svg',
-  '/marcetcecile/brand/waves.svg',
+  // '/brand/multi-waves.svg',
+  '/brand/checkerboard-2.svg',
+  '/brand/half-o.svg',
+  '/brand/double-eyes.svg',
+  '/brand/circle.svg',
+  '/brand/dome.svg',
+  '/brand/dots-2.svg',
+  '/brand/dots.svg',
+  '/brand/eye.svg',
+  '/brand/logo-2.svg',
+  '/brand/logo-3.svg',
+  '/brand/multi-wave-2.svg',
+  '/brand/sparkle.svg',
+  '/brand/waves.svg',
 ];
 
 // Exemple à mettre dans la page Astro ou le .astro component
@@ -32,13 +32,13 @@ const collaborators = [
   {
     name: "Cécile",
     role: "Opticienne diplômée",
-    photo: "/marcetcecile/team/cecile.png",
+    photo: "/team/cecile.png",
     desc: "Spécialiste en création de montures sur-mesure et en conseils personnalisés."
   },
   {
     name: "Marc",
     role: "Opticien",
-    photo: "/marcetcecile/team/marc.png",
+    photo: "/team/marc.png",
     desc: "Il vous accompagne dans le choix de vos lunettes et réalise les ajustements nécessaires."
   },
 ];
@@ -48,7 +48,7 @@ const collaborators = [
 
   <!-- === HERO SECTION === -->
   <section class="relative h-[60vh] w-full overflow-hidden">
-    <img src="/marcetcecile/images/boutique-interieur-2.png" alt="Showroom Marc & Cécile"
+    <img src="/images/boutique-interieur-2.png" alt="Showroom Marc & Cécile"
          class="absolute inset-0 w-full h-full object-cover"/>
     <div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
 
@@ -58,7 +58,7 @@ const collaborators = [
         <p class="text-lg text-white/90 mb-6">
           Opticien artisan lunetier — showroom stylisé et fabrication sur-mesure au cœur de Cambrai.
         </p>
-        <!--<a href="/marcetcecile/contact" class="btn-primary">Prendre rendez-vous</a>-->
+        <!--<a href="/contact" class="btn-primary">Prendre rendez-vous</a>-->
         <!-- Début de widget de lien Calendly -->
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
         <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -102,10 +102,10 @@ const collaborators = [
           </div>
           <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
             <div id="carousel-1" class="relative w-full h-80">
-              <img src="/marcetcecile/images/facade.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/marcetcecile/images/boutique-interieur-1.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/marcetcecile/images/boutique-interieur-2.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/marcetcecile/images/boutique-interieur-3.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
+              <img src="/images/facade.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/boutique-interieur-1.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/boutique-interieur-2.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
+              <img src="/images/boutique-interieur-3.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
               <script type="module">
                 (() => {
                   const images = document.querySelectorAll('#carousel-1 .carrousel-img');
@@ -141,7 +141,7 @@ const collaborators = [
               Bénéficiez d’un suivi précis de votre vue grâce à notre salle d’examen entièrement équipée. Faites contrôler régulièrement votre vision pour assurer le confort optimal de vos lunettes. Nos opticiens formés réalisent votre examen de vue et le renouvellement de votre ordonnance, et vous accompagnent dans le choix de votre nouvelle monture si besoin.
             </p>
           </div>
-          <img src="/marcetcecile/images/salle-exam.png" alt="Salle d’examen" class="flex-1 w-full h-80 object-cover rounded-lg shadow-md" loading="lazy" />
+          <img src="/images/salle-exam.png" alt="Salle d’examen" class="flex-1 w-full h-80 object-cover rounded-lg shadow-md" loading="lazy" />
         </section>
         <div class="w-full flex justify-center my-4">
           <img src={separatorSvgs[1 % separatorSvgs.length]} alt="Séparateur graphique" class="h-8 md:h-12 w-auto opacity-80" loading="lazy" />
@@ -157,17 +157,17 @@ const collaborators = [
           </div>
           <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
             <div id="carousel-0" class="relative w-full h-80">
-              <img src="/marcetcecile/images/c-cile-1.png" alt="C.Cile" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/marcetcecile/images/kuboraum-1.png" alt="Kubaurom" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/marcetcecile/images/theo-1.png" alt="Theo" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/marcetcecile/images/xit-1.png" alt="Xit" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/marcetcecile/images/la-brique-et-la-violette-1.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/marcetcecile/images/c-cile-2.png" alt="C.Cile" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/marcetcecile/images/kuboraum-2.png" alt="Kubaurom" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/marcetcecile/images/theo-2.png" alt="Theo" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/marcetcecile/images/xit-2.png" alt="Xit" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/marcetcecile/images/la-brique-et-la-violette-2.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/marcetcecile/images/la-brique-et-la-violette-3.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
+              <img src="/images/c-cile-1.png" alt="C.Cile" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/kuboraum-1.png" alt="Kubaurom" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/theo-1.png" alt="Theo" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/xit-1.png" alt="Xit" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
+              <img src="/images/la-brique-et-la-violette-1.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
+              <img src="/images/c-cile-2.png" alt="C.Cile" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/kuboraum-2.png" alt="Kubaurom" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/theo-2.png" alt="Theo" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/xit-2.png" alt="Xit" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
+              <img src="/images/la-brique-et-la-violette-2.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
+              <img src="/images/la-brique-et-la-violette-3.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
               <script type="module">
                 (() => {
                   const images = document.querySelectorAll('#carousel-0 .carrousel-img');
@@ -205,9 +205,9 @@ const collaborators = [
           </div>
           <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
             <div id="carousel-2" class="relative w-full h-80">
-              <img src="/marcetcecile/images/very-french-gangsters-1.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/marcetcecile/images/very-french-gangsters-2.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/marcetcecile/images/very-french-gangsters-3.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/very-french-gangsters-1.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/very-french-gangsters-2.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images/very-french-gangsters-3.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
               <script type="module">
                 (() => {
                   const images = document.querySelectorAll('#carousel-2 .carrousel-img');
