@@ -7,6 +7,7 @@ const brandLogos = [
   {src: '/marcetcecile/marques/la-brique-et-la-violette.png', alt: 'La brique et la violette'},
   {src: '/marcetcecile/marques/theo.png', alt: 'Theo'},
   {src: '/marcetcecile/marques/xit.png', alt: 'XIT'},
+  {src: '/marcetcecile/marques/very-french-gangsters.png', alt: 'XIT'},
 ];
 
 const imagePaths = [
@@ -69,7 +70,7 @@ const separatorSvgs = [
   <!-- === BANDEAU DE LOGOS === -->
   <section
       class="relative -mt-8 z-20 bg-white/100 backdrop-blur-sm shadow-lg rounded-xl px-8 py-4 mx-auto
-         flex flex-wrap justify-center items-center gap-10 max-w-3xl">
+         flex flex-wrap justify-center items-center gap-10 max-w-5xl">
     {brandLogos.map(logo => (
         <img src={logo.src} alt={logo.alt}
              class="h-16 w-auto opacity-70 hover:opacity-100 transition"/>
@@ -83,15 +84,13 @@ const separatorSvgs = [
         {[
           {
             title: 'La boutique',
-            text: `Découvrez un espace lumineux et chaleureux, conçu pour offrir une expérience d’achat agréable et personnalisée. 
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+            text: `Découvrez notre boutique en plein centre de Cambrai: un espace lumineux et chaleureux, décoré par des artistes locaux. Notre sélection s’adapte à tous les besoins: des montures accessibles, de grandes marques créateurs, et la possibilité de concevoir votre paire unique, réalisée sur-mesure avec vous.`,
             img: '/marcetcecile/images/boutique.png',
             alt: 'La boutique',
           },
           {
             title: 'Salle d’examen',
-            text: `Une salle d’examen équipée des dernières technologies pour un suivi précis de votre santé visuelle. 
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+            text: `Bénéficiez d’un suivi précis de votre vue grâce à notre salle d’examen entièrement équipée. Faites contrôler régulièrement votre vision pour assurer le confort optimal de vos lunettes. Nos opticiens formés réalisent votre examen de vue et le renouvellement de votre ordonnance, et vous accompagnent dans le choix de votre nouvelle monture si besoin.`,
             img: '/marcetcecile/images/salle-exam.png',
             alt: 'Salle d’examen',
           },
@@ -104,8 +103,13 @@ const separatorSvgs = [
           },
           {
             title: 'Nos marques',
-            text: `Nous collaborons avec les plus grandes marques de lunetterie, mêlant design, innovation et savoir-faire artisanal. 
-               Lorem ipsum dolor sit amet, consectetur adipiscing elit.`,
+            text: `Découvrez un large choix de marques de lunetiers, dont notre fierté: Marc & Cécile, notre collection maison, imaginée et fabriquée directement dans notre boutique à Cambrai. Nous proposons également des griffes reconnues, chacune avec une identité forte: Kuboraum, Théo, XIT, La Fabrique et La Violette.`,
+            img: '/marcetcecile/images/lunettes-2.png',
+            alt: 'Marques partenaires',
+          },
+          {
+            title: 'Pour les plus jeunes',
+            text: `Nous proposons une sélection spécialement conçue pour les enfants, en partenariat avec Very French Gangsters. Vous trouverez un large choix de lunettes de vue et solaires, adaptées à tous les âges, avec de nombreuses formes et couleurs pour plaire à chaque enfant.`,
             img: '/marcetcecile/images/lunettes-2.png',
             alt: 'Marques partenaires',
           },
@@ -137,116 +141,14 @@ const separatorSvgs = [
         ))}
       </div>
 
-
-      <!--Carrousel d'images-->
-      <!--<section class="w-full flex flex-col items-center justify-center py-8">-->
-      <!--  <h3 class="text-3xl font-bold text-[var(&#45;&#45;color-secondary)] mb-4">Nos modèles préférés</h3>-->
-      <!--  <div class="relative w-full max-w-6xl h-[60vh] md:h-[80vh] overflow-hidden rounded-lg shadow-lg bg-white"-->
-      <!--       id="carrousel">-->
-      <!--    {imagePaths.map((src, idx) => (-->
-      <!--        <img-->
-      <!--            src={src}-->
-      <!--            alt={"Photo " + (idx + 1)}-->
-      <!--            class={`carrousel-img absolute inset-0 m-auto object-contain object-center rounded-lg transition-opacity duration-700 ${idx === 0 ? 'opacity-100 z-10' : 'opacity-0 z-0'}`}-->
-      <!--            style="pointer-events:none;"-->
-      <!--            data-idx={idx}-->
-      <!--        />-->
-      <!--    ))}-->
-      <!--    {/* Points navigation */}-->
-      <!--    &lt;!&ndash; Fond flou gris glass sous les puces &ndash;&gt;-->
-      <!--    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex items-center justify-center">-->
-      <!--      <div-->
-      <!--          class="absolute -inset-x-2 -inset-y-2 bg-white/60 backdrop-blur-sm rounded-xl shadow md:bg-gray-100/80"></div>-->
-      <!--      <div class="relative flex space-x-2 px-4 py-2">-->
-      <!--        {imagePaths.map((_, idx) => (-->
-      <!--            <span class="block w-3 h-3 rounded-full carrousel-dot bg-gray-400/50" data-dot={idx}></span>))}-->
-      <!--      </div>-->
-      <!--    </div>-->
-      <!--    {/* Boutons navigation */}-->
-      <!--    <button id="prevBtn"-->
-      <!--            class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 z-20 hover:bg-white">-->
-      <!--      &#8592;-->
-      <!--    </button>-->
-      <!--    <button id="nextBtn"-->
-      <!--            class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 rounded-full p-2 z-20 hover:bg-white">-->
-      <!--      &#8594;-->
-      <!--    </button>-->
-      <!--  </div>-->
-      <!--  <style>-->
-      <!--    /* Adaptation de la hauteur du carrousel à l'écran mobile */-->
-      <!--    @media (max-width: 640px) {-->
-      <!--      #carrousel {-->
-      <!--        height: auto !important;-->
-      <!--        min-height: 220px;-->
-      <!--        max-height: 320px;-->
-      <!--        display: flex;-->
-      <!--        align-items: center;-->
-      <!--        justify-content: center;-->
-      <!--      }-->
-      <!--    }-->
-
-      <!--    #carrousel .carrousel-img {-->
-      <!--      object-fit: contain !important;-->
-      <!--      max-width: 100%;-->
-      <!--      max-height: 100%;-->
-      <!--      width: auto;-->
-      <!--      height: auto;-->
-      <!--      background: #ffffff;-->
-      <!--    }-->
-      <!--  </style>-->
-      <!--  <script type="module" is:inline>-->
-      <!--    const images = document.querySelectorAll("#carrousel .carrousel-img");-->
-      <!--    const dots = document.querySelectorAll("#carrousel .carrousel-dot");-->
-      <!--    let current = 0;-->
-      <!--    const interval = 3000;-->
-
-      <!--    function show(idx) {-->
-      <!--      images.forEach((img, i) => {-->
-      <!--        img.classList.toggle('opacity-100', i === idx);-->
-      <!--        img.classList.toggle('z-10', i === idx);-->
-      <!--        img.classList.toggle('opacity-0', i !== idx);-->
-      <!--        img.classList.toggle('z-0', i !== idx);-->
-      <!--      });-->
-      <!--      dots.forEach((dot, i) => {-->
-      <!--        dot.classList.toggle('bg-[var(&#45;&#45;color-primary)]', i === idx);-->
-      <!--        dot.classList.toggle('bg-gray-400/50', i !== idx);-->
-      <!--      });-->
-      <!--    }-->
-
-      <!--    function next() {-->
-      <!--      current = (current + 1) % images.length;-->
-      <!--      show(current);-->
-      <!--    }-->
-
-      <!--    function prev() {-->
-      <!--      current = (current - 1 + images.length) % images.length;-->
-      <!--      show(current);-->
-      <!--    }-->
-
-      <!--    // interval automatique-->
-      <!--    let auto = setInterval(next, interval);-->
-
-      <!--    // Boutons navigation-->
-      <!--    document.getElementById("prevBtn").addEventListener("click", () => {-->
-      <!--      clearInterval(auto);-->
-      <!--      prev();-->
-      <!--      auto = setInterval(next, interval);-->
-      <!--    });-->
-      <!--    document.getElementById("nextBtn").addEventListener("click", () => {-->
-      <!--      clearInterval(auto);-->
-      <!--      next();-->
-      <!--      auto = setInterval(next, interval);-->
-      <!--    });-->
-
-      <!--    show(current);-->
-      <!--  </script>-->
-      <!--</section>-->
-
       <!-- Section Réseaux Sociaux -->
       <section class="flex flex-col items-center justify-center py-14">
-        <h2 class="text-3xl font-bold text-[var(--color-secondary)] mb-6">
-          Suivez-nous sur les réseaux&nbsp;!
+        <h2 class="text-3xl font-bold text-[var(--color-secondary)] mb-6 text-center">
+          Suivez-nous sur les réseaux !
         </h2>
+        <div class="text-center mb-6">
+          Ne loupez rien de notre actualité, des nouveautés en boutique aux événements spéciaux en nous suivant sur votre réseau social favoris.
+        </div>
         <div class="flex flex-row gap-16 items-center mb-8">
           <!-- Icône Facebook -->
           <a
@@ -278,19 +180,9 @@ const separatorSvgs = [
             </svg>
           </a>
         </div>
-        <!-- LightWidget Instagram dans une card-->
-        <div class="w-full sm:max-w-md bg-white shadow-lg rounded-2xl p-6 flex flex-col items-center">
-          <script src="https://cdn.lightwidget.com/widgets/lightwidget.js"></script>
-          <iframe src="//lightwidget.com/widgets/dad7cc62db915d32910aab6a19614f6f.html"
-                  scrolling="no"
-                  allowtransparency="true"
-                  class="lightwidget-widget w-full"
-                  style="border:0;overflow:hidden;min-height:400px;border-radius:1rem;">
-          </iframe>
-        </div>
       </section>
 
-      <section class="relative bg-[var(--color-primary)/10] py-32 md:py-40 overflow-hidden">
+      <section class="relative bg-[var(--color-primary)/10] py-12 md:py-20 overflow-hidden">
         <!-- Décoration subtile en background -->
         <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-[var(--color-primary)/5] pointer-events-none"></div>
 
