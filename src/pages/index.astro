@@ -10,15 +10,6 @@ const brandLogos = [
   {src: '/marcetcecile/marques/very-french-gangsters.png', alt: 'XIT'},
 ];
 
-const imagePaths = [
-  '/marcetcecile/carrousel/img-1.png',
-  '/marcetcecile/carrousel/img-2.png',
-  '/marcetcecile/carrousel/img-3.png',
-  '/marcetcecile/carrousel/img-4.png',
-  '/marcetcecile/carrousel/img-5.png',
-  '/marcetcecile/carrousel/img-6.png',
-];
-
 const separatorSvgs = [
   // '/marcetcecile/brand/multi-waves.svg',
   '/marcetcecile/brand/checkerboard-2.svg',
@@ -34,6 +25,22 @@ const separatorSvgs = [
   '/marcetcecile/brand/multi-wave-2.svg',
   '/marcetcecile/brand/sparkle.svg',
   '/marcetcecile/brand/waves.svg',
+];
+
+// Exemple à mettre dans la page Astro ou le .astro component
+const collaborators = [
+  {
+    name: "Cécile",
+    role: "Opticienne diplômée",
+    photo: "/marcetcecile/team/cecile.png",
+    desc: "Spécialiste en création de montures sur-mesure et en conseils personnalisés."
+  },
+  {
+    name: "Marc",
+    role: "Opticien",
+    photo: "/marcetcecile/team/marc.png",
+    desc: "Il vous accompagne dans le choix de vos lunettes et réalise les ajustements nécessaires."
+  },
 ];
 ---
 
@@ -85,7 +92,7 @@ const separatorSvgs = [
           {
             title: 'La boutique',
             text: `Découvrez notre boutique en plein centre de Cambrai: un espace lumineux et chaleureux, décoré par des artistes locaux. Notre sélection s’adapte à tous les besoins: des montures accessibles, de grandes marques créateurs, et la possibilité de concevoir votre paire unique, réalisée sur-mesure avec vous.`,
-            img: '/marcetcecile/images/boutique.png',
+            img: '/marcetcecile/images/boutique-interieur.png',
             alt: 'La boutique',
           },
           {
@@ -140,6 +147,38 @@ const separatorSvgs = [
           </>
         ))}
       </div>
+
+      <!--EQUIPE SECTION -->
+      <section class="container mx-auto py-16" id="equipe">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-[var(--color-secondary)] mb-12">L’équipe</h2>
+        <div class="flex flex-wrap gap-10 justify-center max-w-10xl mx-auto">
+          {collaborators.map(person => (
+              <div class="flex flex-col items-center text-center relative group">
+                <div class="relative mb-4 flex items-center justify-center">
+                  {/* Cadres SVGs */}
+                  <svg viewBox="0 0 130 130" class="absolute -top-5 -left-5 w-36 h-36 pointer-events-none select-none z-0" style="color: var(--color-primary, #B5838D); transform: rotate(-2deg);" fill="none" stroke="currentColor" stroke-width="4">
+                    <path d="M12 22 Q8 12 22 12 L108 8 Q124 6 124 24 L120 112 Q124 124 108 124 L24 122 Q6 124 10 108 Z" stroke-linejoin="round" stroke-dasharray="7 8" />
+                  </svg>
+                  <svg viewBox="0 0 130 130" class="absolute -top-2 -left-2 w-36 h-36 pointer-events-none select-none z-0"
+                       style="color: var(--color-secondary, #6D6875); transform: rotate(1.5deg);"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-width="10">
+                    <path d="M16 18 Q12 8 28 14 L112 12 Q122 12 120 26 L124 114 Q122 122 112 124 L26 118 Q8 122 14 112 Z"/>
+                  </svg>
+                  <svg viewBox="0 0 130 130" class="absolute top-0 left-0 w-36 h-36 pointer-events-none select-none z-0" style="color: var(--color-primary, #B5838D); transform: rotate(3deg);" fill="none" stroke="currentColor" stroke-width="2.3">
+                    <path d="M18 19 Q15 11 25 18 L110 16 Q119 15 118 27 L121 115 Q123 125 110 123 L25 123 Q10 124 13 114 Z" stroke-dasharray="9 7" />
+                  </svg>
+                  {/* Image */}
+                  <img src={person.photo} alt={person.name} class="relative z-10 w-32 h-32 rounded-xl object-cover shadow-lg border-4 border-white" />
+                </div>
+                <div>
+                  <h3 class="text-[var(--color-primary)] font-semibold text-xl mb-1">{person.name}</h3>
+                  <p class="text-gray-600 text-sm max-w-xs break-words">{person.desc}</p>                </div>
+              </div>
+          ))}
+        </div>
+      </section>
 
       <!-- Section Réseaux Sociaux -->
       <section class="flex flex-col items-center justify-center py-14">
