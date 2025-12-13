@@ -1,0 +1,33 @@
+---
+/**
+    * Un composant Astro pour remplir le background d'une page avec un SVG répétable.
+    * @param {string} src URL ou chemin vers le SVG. (ex: "/wave.svg" ou import depuis 'src/assets/wave.svg')
+    * @param {string} [size] - Taille du motif (ex: 'auto', '200px', '100vw 50px' ou autre). Optionnel.
+    * @param {string} [opacity] - Opacité CSS du motif (ex: '1', '0.7'). Optionnel.
+    * @param {string} [className] - Classe additionnelle si besoin. Optionnel.
+    */
+const { src, size = "auto", opacity = "1", className = "" } = Astro.props;
+---
+
+<style>
+  .background-astro-pattern {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+    /* Laisse le contenu passer au-dessus */
+  }
+</style>
+
+<div
+    class={`background-astro-pattern ${className}`}
+    style={`
+    background-image: url('${src}');
+    background-repeat: repeat;
+    background-size: ${size};
+    opacity: ${opacity};
+  `}
+    aria-hidden="true"
+></div>
