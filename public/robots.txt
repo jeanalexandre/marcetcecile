@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.marcetcecile.fr/sitemap-index.xml
