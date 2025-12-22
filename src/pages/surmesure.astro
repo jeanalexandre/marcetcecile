@@ -36,11 +36,11 @@ const steps = [
 
 function getIcon(icon) {
   switch (icon) {
-   case "message-circle":
+    case "message-circle":
       return `<img src="/icons/message-circle.svg" alt="Bulle" class="h-8 w-8 inline-block align-middle" />`;
     case "3d-printer":
       return `<img src="/icons/3d-printer.svg" alt="Imprimante 3D" class="h-8 w-8 inline-block align-middle" />`;
-      case "materials":
+    case "materials":
       return `<img src="/icons/materials.svg" alt="Plaques" class="h-8 w-8 inline-block align-middle" />`;
     case "gear":
       return `<img src="/icons/gear.svg" alt="Engenage" class="h-8 w-8 inline-block align-middle" />`;
@@ -51,7 +51,9 @@ function getIcon(icon) {
   }
 }
 ---
-<Layout title="Atelier lunettes sur mesure à Cambrai | Marc & Cecile Opticien">
+<Layout title="Atelier lunettes sur mesure à Cambrai | Marc & Cecile Opticien"
+        description="Atelier sur mesure à Cambrai: créez vos lunettes personnalisées de A à Z avec Marc & Cecile. Artisanat, choix des matériaux et design unique."
+>
   <!-- === HERO SECTION (inchangée) === -->
   <section class="relative h-[60vh] w-full overflow-hidden">
     <img src="/images/atelier.png" alt="Showroom Marc & Cécile"
@@ -72,8 +74,10 @@ function getIcon(icon) {
   <section class="px-4 py-8 max-w-3xl mx-auto text-center">
     <p class="text-lg text-gray-700 leading-relaxed">
       En plus de notre activité d’opticien traditionnel, nous sommes également artisans lunetiers.<br/>
-      Cela signifie que nous fabriquons, en toute petite série, des collections made in Cambrai ! Toutes les montures sont imaginées, dessinées et réalisées directement dans notre atelier !<br/>
-      Vous pouvez ainsi venir nous rencontrer avec vos idées et projets: nous concevrons pour vous une paire de lunettes unique, à votre taille, et qui vous ressemble parfaitement.
+      Cela signifie que nous fabriquons, en toute petite série, des collections made in Cambrai ! Toutes les montures sont
+      imaginées, dessinées et réalisées directement dans notre atelier !<br/>
+      Vous pouvez ainsi venir nous rencontrer avec vos idées et projets: nous concevrons pour vous une paire de lunettes
+      unique, à votre taille, et qui vous ressemble parfaitement.
     </p>
   </section>
 
