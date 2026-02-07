@@ -1,63 +1,67 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from "astro:assets";
+
+// Import des images locales des étapes et du hero
+import atelierImg from '../assets/images/images/atelier.png';
+import etudeBesoinImg from '../assets/images/images/etude-besoin.png';
+import printerImg from '../assets/images/images/printer.png';
+import acetateImg from '../assets/images/images/acetate.png';
+import craftImg from '../assets/images/images/craft.png';
+import reglageImg from '../assets/images/images/reglage.png';
 
 const steps = [
   {
     icon: "message-circle",
     title: "Rencontre & étude du besoin",
     description: "Un premier échange afin d'échanger autour de votre besoin, de vos goûts et préférences, prise de mesures et définition du style.",
-    img: "/images/etude-besoin.png",
+    img: etudeBesoinImg,
   },
   {
     icon: "3d-printer",
     title: "Prototype 3D",
     description: "Création et impression d’un prototype 3D pour valider la forme et la taille de la monture.",
-    img: "/images/printer.png",
+    img: printerImg,
   },
   {
     icon: "materials",
     title: "Choix des couleurs",
-    description: "Sélection parmis un large choix de couleurs pour la façade et les branches de votre futur paire de lunettes, aux finitions variées et adaptées à vos envies.",
-    img: "/images/acetate.png",
+    description: "Sélection parmi un large choix de couleurs pour la façade et les branches de votre futur paire de lunettes, aux finitions variées et adaptées à vos envies.",
+    img: acetateImg,
   },
   {
     icon: "gear",
     title: "Fabrication artisanale",
     description: "Découpe, polissage, assemblage et contrôle qualité par nos soins dans notre atelier !",
-    img: "/images/craft.png",
+    img: craftImg,
   },
   {
     icon: "glasses",
     title: "Réglages & réception",
     description: "Ajustements et contrôle final pour un confort optimal avant que vous ne preniez réception de votre nouvelle paire de lunettes unique.",
-    img: "/images/reglage.png",
+    img: reglageImg,
   },
 ];
 
 function getIcon(icon) {
   switch (icon) {
-    case "message-circle":
-      return `<img src="/icons/message-circle.svg" alt="Bulle" class="h-8 w-8 inline-block align-middle" />`;
-    case "3d-printer":
-      return `<img src="/icons/3d-printer.svg" alt="Imprimante 3D" class="h-8 w-8 inline-block align-middle" />`;
-    case "materials":
-      return `<img src="/icons/materials.svg" alt="Plaques" class="h-8 w-8 inline-block align-middle" />`;
-    case "gear":
-      return `<img src="/icons/gear.svg" alt="Engenage" class="h-8 w-8 inline-block align-middle" />`;
-    case "glasses":
-      return `<img src="/icons/glasses.svg" alt="Lunettes" class="h-8 w-8 inline-block align-middle" />`;
-    default:
-      return "";
+    case "message-circle": return `<img src="/src/assets/images/icons/message-circle.svg" alt="Bulle" class="h-8 w-8 inline-block align-middle" />`;
+    case "3d-printer": return `<img src="/src/assets/images/icons/3d-printer.svg" alt="Imprimante 3D" class="h-8 w-8 inline-block align-middle" />`;
+    case "materials": return `<img src="/src/assets/images/icons/materials.svg" alt="Plaques" class="h-8 w-8 inline-block align-middle" />`;
+    case "gear": return `<img src="/src/assets/images/icons/gear.svg" alt="Engenage" class="h-8 w-8 inline-block align-middle" />`;
+    case "glasses": return `<img src="/src/assets/images/icons/glasses.svg" alt="Lunettes" class="h-8 w-8 inline-block align-middle" />`;
+    default: return "";
   }
 }
 ---
+
 <Layout title="Atelier lunettes sur mesure à Cambrai | Marc & Cecile Opticien"
-        description="Atelier sur mesure à Cambrai: créez vos lunettes personnalisées de A à Z avec Marc & Cecile. Artisanat, choix des matériaux et design unique."
->
-  <!-- === HERO SECTION (inchangée) === -->
+        description="Atelier sur mesure à Cambrai: créez vos lunettes personnalisées de A à Z avec Marc & Cecile. Artisanat, choix des matériaux et design unique.">
+
+  <!-- === HERO SECTION === -->
   <section class="relative h-[60vh] w-full overflow-hidden">
-    <img src="/images/atelier.png" alt="Showroom Marc & Cécile"
-         class="absolute inset-0 w-full h-full object-cover"/>
+    <Image src={atelierImg} alt="Showroom Marc & Cécile"
+           class="absolute inset-0 w-full h-full object-cover" priority />
     <div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
 
     <div class="relative z-10 flex items-center justify-center h-full container-max">
@@ -90,32 +94,27 @@ function getIcon(icon) {
           <div class="flex items-stretch relative">
             {/* Timeline column */}
             <div class="relative flex flex-col items-center w-20 min-w-20 h-auto z-10">
-              {/* Barre verticale parfaitement centrée sur la colonne */}
               <div class="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-full bg-[var(--color-primary)] opacity-40"></div>
-              {/* Icône */}
-              <div
-                  class="bg-white border-2 border-[var(--color-secondary)] rounded-full flex items-center justify-center h-16 w-16 z-10 mt-4">
-                <div set:html={getIcon(step.icon)}/>
+              <div class="bg-white border-2 border-[var(--color-secondary)] rounded-full flex items-center justify-center h-16 w-16 z-10 mt-4">
+                <div set:html={getIcon(step.icon)} />
               </div>
-              {/* Chevron */}
               {idx < steps.length - 1 && (
-                  <span class="mt-4">
-            <span class="mt-4 drop-shadow">
-  <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"
-       stroke-linejoin="round">
-    <polyline points="6 10 12 16 18 10"/>
-  </svg>
-</span>
-          </span>
+                  <span class="mt-4 drop-shadow">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6" fill="none" stroke="white" stroke-width="3"
+                         stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 10 12 16 18 10"/>
+                    </svg>
+                  </span>
               )}
             </div>
+
             {/* Section Content */}
             <div class="flex-1 flex flex-col md:flex-row md:items-center gap-8 md:ml-8">
-              <div class="flex-1 py-2 bg-white/80 rounded-xl p-8">
+              <div class="flex-1 py-2 bg-white/80 rounded-xl p-6">
                 <h3 class="text-2xl font-bold text-[var(--color-primary)] mb-2">{step.title}</h3>
                 <p class="text-gray-700 mb-2">{step.description}</p>
               </div>
-              <img src={step.img} alt={step.title} class="w-full md:w-60 h-40 object-cover rounded-lg mb-5"/>
+              <Image src={step.img} alt={step.title} class="w-full md:w-60 h-40 object-cover rounded-lg mb-5" loading="lazy" />
             </div>
           </div>
       ))}

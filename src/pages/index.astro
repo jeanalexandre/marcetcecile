@@ -1,66 +1,78 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { Image } from "astro:assets";
 
+// Images locales
+import salleExam from "../assets/images/images/salle-exam.png";
+import heroBoutique from "../assets/images/images/boutique-interieur-2.png";
+import cecileImg from '../assets/images/team/cecile.png';
+import marcImg from '../assets/images/team/marc.png';
+
+// Import dynamique des logos
+const rawImages = import.meta.glob("../assets/images/marques/*.{png,webp,svg,jpg,jpeg}", { eager: true });
+
+// Mapping des logos
 const brandLogos = [
-  {src: '/marques/marc-et-cecile.svg', alt: 'C.CILE'},
-  {src: '/marques/kuboraum.webp', alt: 'Kuboraum'},
-  {src: '/marques/la-brique-et-la-violette.png', alt: 'La brique et la violette'},
-  {src: '/marques/theo.png', alt: 'Theo'},
-  {src: '/marques/xit.png', alt: 'XIT'},
-  {src: '/marques/very-french-gangsters.png', alt: 'XIT'},
+  { file: "marc-et-cecile.svg", alt: "C.CILE" },
+  { file: "kuboraum.webp", alt: "Kuboraum" },
+  { file: "la-brique-et-la-violette.png", alt: "La brique et la violette" },
+  { file: "theo.png", alt: "Theo" },
+  { file: "xit.png", alt: "XIT" },
+  { file: "very-french-gangsters.png", alt: "Very French Gangsters" },
 ];
 
 const separatorSvgs = [
-  // '/brand/multi-waves.svg',
-  '/brand/checkerboard-2.svg',
-  '/brand/half-o.svg',
-  '/brand/double-eyes.svg',
-  '/brand/circle.svg',
-  '/brand/dome.svg',
-  '/brand/dots-2.svg',
-  '/brand/dots.svg',
-  '/brand/eye.svg',
-  '/brand/logo-2.svg',
-  '/brand/logo-3.svg',
-  '/brand/multi-wave-2.svg',
-  '/brand/sparkle.svg',
-  '/brand/waves.svg',
+  'src/assets/images/brand/checkerboard-2.svg',
+  'src/assets/images/brand/half-o.svg',
+  'src/assets/images/brand/double-eyes.svg',
+  'src/assets/images/brand/circle.svg',
+  'src/assets/images/brand/dome.svg',
+  'src/assets/images/brand/dots-2.svg',
+  'src/assets/images/brand/dots.svg',
+  'src/assets/images/brand/eye.svg',
+  'src/assets/images/brand/logo-2.svg',
+  'src/assets/images/brand/logo-3.svg',
+  'src/assets/images/brand/multi-wave-2.svg',
+  'src/assets/images/brand/sparkle.svg',
+  'src/assets/images/brand/waves.svg',
 ];
 
-// Exemple à mettre dans la page Astro ou le .astro component
 const collaborators = [
   {
     name: "Cécile",
     role: "Opticienne diplômée",
-    photo: "/team/cecile.png",
+    photo: cecileImg,
     desc: "Spécialiste en création de montures sur-mesure et en conseils personnalisés."
   },
   {
     name: "Marc",
     role: "Opticien",
-    photo: "/team/marc.png",
+    photo: marcImg,
     desc: "Il vous accompagne dans le choix de vos lunettes et réalise les ajustements nécessaires."
   },
 ];
+
+// Fonction utilitaire pour carrousels
+const createImageMap = Object.fromEntries(
+    Object.entries(rawImages).map(([path, module]) => [path.split("/").pop(), module.default])
+);
 ---
 
 <Layout title="Opticien indépendant à Cambrai | Lunettes sur mesure – Marc & Cecile"
         description="Opticien indépendant à Cambrai, Marc & Cecile: lunettes sur mesure, lentilles de contact, montures tendance et conseils personnalisés.">
 
-  <!-- === HERO SECTION === -->
+  <!-- HERO -->
   <section class="relative h-[60vh] w-full overflow-hidden">
-    <img src="/images/boutique-interieur-2.png" alt="Showroom Marc & Cécile"
-         class="absolute inset-0 w-full h-full object-cover"/>
+    <Image src={heroBoutique} alt="Showroom Marc & Cécile"
+           width={1600}
+           height={1067} class="max-w-full absolute inset-0 w-full h-full object-cover" priority />
     <div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
-
     <div class="relative z-10 flex items-center justify-center h-full container-max">
       <div class="max-w-2xl text-center text-white">
         <h1 class="text-5xl font-display mb-4 drop-shadow-lg">Marc & Cécile</h1>
         <p class="text-lg text-white/90 mb-6">
           Opticien artisan lunetier — showroom stylisé et fabrication sur-mesure au cœur de Cambrai.
         </p>
-        <!--<a href="/contact" class="btn-primary">Prendre rendez-vous</a>-->
-        <!-- Début de widget de lien Calendly -->
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
         <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
         <button
@@ -70,172 +82,141 @@ const collaborators = [
         >
           Prendre rendez-vous
         </button>
-        <!-- Fin de widget de lien Calendly -->
       </div>
     </div>
   </section>
 
-  <!-- === BANDEAU DE LOGOS === -->
-  <section
-      class="relative -mt-8 z-20 bg-white/100 backdrop-blur-sm shadow-lg rounded-xl px-8 py-4 mx-auto
-         flex flex-wrap justify-center items-center gap-10 max-w-5xl">
-    {brandLogos.map(logo => (
-        <img src={logo.src} alt={logo.alt}
-             class="h-16 w-auto opacity-70 hover:opacity-100 transition"/>
-    ))}
+  <!-- BANDEAU DE LOGOS -->
+  <section class="relative -mt-8 z-20 bg-white/100 backdrop-blur-sm shadow-lg rounded-xl px-8 py-4 mx-auto flex flex-wrap justify-center items-center gap-10 max-w-5xl">
+    {brandLogos.map(logo => {
+      const img = createImageMap[logo.file];
+      if (!img) return null;
+      return <Image src={img} alt={logo.alt} height={65} class="max-w-full opacity-70 hover:opacity-100 transition" loading="lazy" />;
+    })}
   </section>
 
   <main class="relative flex flex-col items-center">
     <div class="w-full max-w-7xl px-6 md:px-10 xl:px-16">
 
+      <!-- BOUTIQUE -->
+      <section class="py-16 flex flex-col md:flex-row items-center gap-10 relative overflow-visible">
+        <img src={separatorSvgs[3]} alt="Décor graphique" class="floating-svg absolute top-0 left-0 w-16 h-16 md:w-24 md:h-24 opacity-40 pointer-events-none" style="transform: translate(-40%,-40%);" />
+        <div class="flex-1 text-center flex flex-col items-center justify-center bg-white/80 rounded-xl p-8">
+          <h2 class="text-3xl font-bold text-[var(--color-primary)] mb-4">La boutique</h2>
+          <p class="text-gray-700 leading-relaxed max-w-prose">
+            Découvrez notre boutique en plein centre de Cambrai: un espace lumineux et chaleureux, décoré par des artistes locaux.
+            Notre sélection s’adapte à tous les besoins: des montures accessibles, de grandes marques créateurs, et la possibilité de concevoir votre paire unique, réalisée sur-mesure avec vous.
+          </p>
+        </div>
+        <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
+          <div id="carousel-boutique" class="relative w-full h-80">
+            {["facade.png", "boutique-interieur-1.png", "boutique-interieur-2.png", "boutique-interieur-3.png"].map((file, idx) => (
+                <Image
+                    src={`/src/assets/images/images/${file}`}
+                    alt="La boutique"
+                    width={1600}
+                    height={1067}
+                    class="max-w-full arrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700"
+                    style={`opacity:${idx === 0 ? 1 : 0}; z-index:${idx === 0 ? 10 : 0}`}
+                    loading="lazy"
+                    data-idx={idx}
+                />
+            ))}
+            <script type="module">
+              (() => {
+                const images = document.querySelectorAll('#carousel-boutique .carrousel-img');
+                let current = 0;
+                function show(idx) {
+                  images.forEach((img, i) => {
+                    img.style.opacity = i === idx ? '1' : '0';
+                    img.style.zIndex = i === idx ? '10' : '0';
+                  });
+                }
+                setInterval(() => { current = (current + 1) % images.length; show(current); }, 3500);
+              })();
+            </script>
+          </div>
+        </div>
+      </section>
 
-      <!--BOUTIQUE SECTION-->
-      <div class="container-max">
-        <!-- SECTION 1: La boutique avec carrousel -->
-        <section class="py-16 flex flex-col md:flex-row items-center gap-10 relative" style="overflow:visible;">
-          <img src={separatorSvgs[3 % separatorSvgs.length]} alt="Décor graphique" class="floating-svg absolute top-0 left-0 w-16 h-16 md:w-24 md:h-24 opacity-40 pointer-events-none icon-contour-3" style="transform: translate(-40%,-40%);" />
-          <div class="flex-1 text-center flex flex-col items-center justify-center bg-white/80 rounded-xl p-8">
-            <h2 class="text-3xl font-bold text-[var(--color-primary)] mb-4">La boutique</h2>
-            <p class="text-gray-700 leading-relaxed max-w-prose">
-              Découvrez notre boutique en plein centre de Cambrai: un espace lumineux et chaleureux, décoré par des artistes locaux.
-              Notre sélection s’adapte à tous les besoins: des montures accessibles, de grandes marques créateurs, et la possibilité de concevoir votre paire unique, réalisée sur-mesure avec vous.
-            </p>
-          </div>
-          <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
-            <div id="carousel-1" class="relative w-full h-80">
-              <img src="/images/facade.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/boutique-interieur-1.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/boutique-interieur-2.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/images/boutique-interieur-3.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <script type="module">
-                (() => {
-                  const images = document.querySelectorAll('#carousel-1 .carrousel-img');
-                  let current = 0;
-                  function show(idx) {
-                    images.forEach((img, i) => {
-                      img.classList.toggle('opacity-100', i === idx);
-                      img.classList.toggle('z-10', i === idx);
-                      img.classList.toggle('opacity-0', i !== idx);
-                      img.classList.toggle('z-0', i !== idx);
-                    });
-                  }
-                  function next() {
-                    current = (current + 1) % images.length;
-                    show(current);
-                  }
-                  setInterval(next, 3500);
-                  show(current);
-                })();
-              </script>
-            </div>
-          </div>
-        </section>
-        <div class="w-full flex justify-center my-4">
-          <img src={separatorSvgs[0 % separatorSvgs.length]} alt="Séparateur graphique" class="h-8 md:h-12 w-auto opacity-80" loading="lazy" />
-        </div>
-        <!-- SECTION 2: Salle d’examen -->
-        <section class="py-16 flex flex-col md:flex-row-reverse items-center gap-10 relative" style="overflow:visible;">
-          <img src={separatorSvgs[4 % separatorSvgs.length]} alt="Décor graphique" class="floating-svg absolute bottom-0 right-0 w-16 h-16 md:w-24 md:h-24 opacity-40 pointer-events-none icon-contour-0" style="transform: translate(40%,40%);" />
-          <div class="flex-1 text-center flex flex-col items-center justify-center bg-white/80 rounded-xl p-8">
-            <h2 class="text-3xl font-bold text-[var(--color-primary)] mb-4">Salle d’examen</h2>
-            <p class="text-gray-700 leading-relaxed max-w-prose">
-              Bénéficiez d’un suivi précis de votre vue grâce à notre salle d’examen entièrement équipée. Faites contrôler régulièrement votre vision pour assurer le confort optimal de vos lunettes. Nos opticiens formés réalisent votre examen de vue et le renouvellement de votre ordonnance, et vous accompagnent dans le choix de votre nouvelle monture si besoin.
-            </p>
-          </div>
-          <img src="/images/salle-exam.png" alt="Salle d’examen" class="flex-1 w-full h-80 object-cover rounded-lg shadow-md" loading="lazy" />
-        </section>
-        <div class="w-full flex justify-center my-4">
-          <img src={separatorSvgs[1 % separatorSvgs.length]} alt="Séparateur graphique" class="h-8 md:h-12 w-auto opacity-80" loading="lazy" />
-        </div>
-        <!-- SECTION 3: Nos collections -->
-        <section class="py-16 flex flex-col md:flex-row items-center gap-10 relative" style="overflow:visible;">
-          <img src={separatorSvgs[3 % separatorSvgs.length]} alt="Décor graphique" class="floating-svg absolute top-0 left-0 w-16 h-16 md:w-24 md:h-24 opacity-40 pointer-events-none icon-contour-3" style="transform: translate(-40%,-40%);" />
-          <div class="flex-1 text-center flex flex-col items-center justify-center bg-white/80 rounded-xl p-8">
-            <h2 class="text-3xl font-bold text-[var(--color-primary)] mb-4">Nos collections</h2>
-            <p class="text-gray-700 leading-relaxed max-w-prose">
-              Découvrez un large choix de marques de lunetiers, dont notre fierté: Marc & Cécile, notre collection maison, imaginée et fabriquée directement dans notre boutique à Cambrai. Nous proposons également des griffes reconnues, chacune avec une identité forte: Kuboraum, Théo, XIT, La Fabrique et La Violette.
-            </p>
-          </div>
-          <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
-            <div id="carousel-0" class="relative w-full h-80">
-              <img src="/images/c-cile-1.png" alt="C.Cile" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/kuboraum-1.png" alt="Kubaurom" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/theo-1.png" alt="Theo" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/xit-1.png" alt="Xit" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/images/la-brique-et-la-violette-1.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/images/c-cile-2.png" alt="C.Cile" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/kuboraum-2.png" alt="Kubaurom" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/theo-2.png" alt="Theo" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/xit-2.png" alt="Xit" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/images/la-brique-et-la-violette-2.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/images/la-brique-et-la-violette-3.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <script type="module">
-                (() => {
-                  const images = document.querySelectorAll('#carousel-0 .carrousel-img');
-                  let current = 0;
-                  function show(idx) {
-                    images.forEach((img, i) => {
-                      img.classList.toggle('opacity-100', i === idx);
-                      img.classList.toggle('z-10', i === idx);
-                      img.classList.toggle('opacity-0', i !== idx);
-                      img.classList.toggle('z-0', i !== idx);
-                    });
-                  }
-                  function next() {
-                    current = (current + 1) % images.length;
-                    show(current);
-                  }
-                  setInterval(next, 3500);
-                  show(current);
-                })();
-              </script>
-            </div>
-          </div>
-        </section>
-        <div class="w-full flex justify-center my-4">
-          <img src={separatorSvgs[2 % separatorSvgs.length]} alt="Séparateur graphique" class="h-8 md:h-12 w-auto opacity-80" loading="lazy" />
-        </div>
-        <!-- SECTION 4: Pour les plus jeunes -->
-        <section class="py-16 flex flex-col md:flex-row items-center gap-10 relative" style="overflow:visible;">
-          <img src={separatorSvgs[3 % separatorSvgs.length]} alt="Décor graphique" class="floating-svg absolute top-0 left-0 w-16 h-16 md:w-24 md:h-24 opacity-40 pointer-events-none icon-contour-3" style="transform: translate(-40%,-40%);" />
-          <div class="flex-1 text-center flex flex-col items-center justify-center bg-white/80 rounded-xl p-8">
-            <h2 class="text-3xl font-bold text-[var(--color-primary)] mb-4">Et pour les plus jeunes</h2>
-            <p class="text-gray-700 leading-relaxed max-w-prose">
-              Nous proposons une sélection spécialement conçue pour les enfants, en partenariat avec Very French Gangsters. Vous trouverez un large choix de lunettes de vue et solaires, adaptées à tous les âges, avec de nombreuses formes et couleurs pour plaire à chaque enfant.
-            </p>
-          </div>
-          <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
-            <div id="carousel-2" class="relative w-full h-80">
-              <img src="/images/very-french-gangsters-1.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/very-french-gangsters-2.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/very-french-gangsters-3.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <script type="module">
-                (() => {
-                  const images = document.querySelectorAll('#carousel-2 .carrousel-img');
-                  let current = 0;
-                  function show(idx) {
-                    images.forEach((img, i) => {
-                      img.classList.toggle('opacity-100', i === idx);
-                      img.classList.toggle('z-10', i === idx);
-                      img.classList.toggle('opacity-0', i !== idx);
-                      img.classList.toggle('z-0', i !== idx);
-                    });
-                  }
-                  function next() {
-                    current = (current + 1) % images.length;
-                    show(current);
-                  }
-                  setInterval(next, 3500);
-                  show(current);
-                })();
-              </script>
-            </div>
-          </div>
-        </section>
+      <div class="w-full flex justify-center my-4">
+        <img src={separatorSvgs[0]} alt="Séparateur graphique" class="h-8 md:h-12 w-auto opacity-80" loading="lazy" />
       </div>
 
+      <!-- SALLE D’EXAMEN -->
+      <section class="py-16 flex flex-col md:flex-row-reverse items-center gap-10 relative overflow-visible">
+        <img src={separatorSvgs[4]} alt="Décor graphique" class="floating-svg absolute bottom-0 right-0 w-16 h-16 md:w-24 md:h-24 opacity-40 pointer-events-none" style="transform: translate(40%,40%);" />
+        <div class="flex-1 text-center flex flex-col items-center justify-center bg-white/80 rounded-xl p-8">
+          <h2 class="text-3xl font-bold text-[var(--color-primary)] mb-4">Salle d’examen</h2>
+          <p class="text-gray-700 leading-relaxed max-w-prose">
+            Bénéficiez d’un suivi précis de votre vue grâce à notre salle d’examen entièrement équipée. Faites contrôler régulièrement votre vision pour assurer le confort optimal de vos lunettes. Nos opticiens formés réalisent votre examen de vue et le renouvellement de votre ordonnance, et vous accompagnent dans le choix de votre nouvelle monture si besoin.
+          </p>
+        </div>
+        <Image src={salleExam} alt="Salle d’examen"
+               width={1600}
+               height={1067} class="max-w-full flex-1 w-full h-80 object-cover rounded-lg shadow-md" loading="lazy"/>
+      </section>
 
-      <!--EQUIPE SECTION -->
+      <div class="w-full flex justify-center my-4">
+        <img src={separatorSvgs[1]} alt="Séparateur graphique" class="h-8 md:h-12 w-auto opacity-80" loading="lazy" />
+      </div>
+
+      <!-- NOS COLLECTIONS -->
+      <section class="py-16 flex flex-col md:flex-row items-center gap-10 relative overflow-visible">
+        <img src={separatorSvgs[3]} alt="Décor graphique" class="floating-svg absolute top-0 left-0 w-16 h-16 md:w-24 md:h-24 opacity-40 pointer-events-none" style="transform: translate(-40%,-40%);" />
+        <div class="flex-1 text-center flex flex-col items-center justify-center bg-white/80 rounded-xl p-8">
+          <h2 class="text-3xl font-bold text-[var(--color-primary)] mb-4">Nos collections</h2>
+          <p class="text-gray-700 leading-relaxed max-w-prose">
+            Découvrez un large choix de marques de lunetiers, dont notre fierté: Marc & Cécile, notre collection maison, imaginée et fabriquée directement dans notre boutique à Cambrai. Nous proposons également des griffes reconnues, chacune avec une identité forte: Kuboraum, Théo, XIT, La Fabrique et La Violette.
+          </p>
+        </div>
+        <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
+          <div id="carousel-collections" class="relative w-full h-80">
+            {["c-cile-1.png","kuboraum-1.png","theo-1.png","xit-1.png","la-brique-et-la-violette-1.png","c-cile-2.png","theo-2.png","xit-2.png","la-brique-et-la-violette-2.png","la-brique-et-la-violette-3.png"].map((file, idx) => (
+                <Image src={`/src/assets/images/images/${file}`} alt={file}
+                       width={1600}
+                       height={1067} class="max-w-full carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700" style={`opacity:${idx<3?1:0}; z-index:${idx<3?10:0}`} loading="lazy" data-idx={idx} />
+            ))}
+            <script type="module">
+              (() => {
+                const images = document.querySelectorAll('#carousel-collections .carrousel-img');
+                let current = 0;
+                function show(idx){images.forEach((img,i)=>{img.style.opacity=i===idx?'1':'0';img.style.zIndex=i===idx?10:0;});}
+                setInterval(()=>{current=(current+1)%images.length;show(current);},3500);
+              })();
+            </script>
+          </div>
+        </div>
+      </section>
+
+      <div class="w-full flex justify-center my-4">
+        <img src={separatorSvgs[2]} alt="Séparateur graphique" class="h-8 md:h-12 w-auto opacity-80" loading="lazy" />
+      </div>
+
+      <!-- POUR LES PLUS JEUNES -->
+      <section class="py-16 flex flex-col md:flex-row items-center gap-10 relative overflow-visible">
+        <img src={separatorSvgs[3]} alt="Décor graphique" class="floating-svg absolute top-0 left-0 w-16 h-16 md:w-24 md:h-24 opacity-40 pointer-events-none" style="transform: translate(-40%,-40%);" />
+        <div class="flex-1 text-center flex flex-col items-center justify-center bg-white/80 rounded-xl p-8">
+          <h2 class="text-3xl font-bold text-[var(--color-primary)] mb-4">Et pour les plus jeunes</h2>
+          <p class="text-gray-700 leading-relaxed max-w-prose">
+            Nous proposons une sélection spécialement conçue pour les enfants, en partenariat avec Very French Gangsters. Vous trouverez un large choix de lunettes de vue et solaires, adaptées à tous les âges, avec de nombreuses formes et couleurs pour plaire à chaque enfant.
+          </p>
+        </div>
+        <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
+          <div id="carousel-jeunes" class="relative w-full h-80">
+            {["very-french-gangsters-1.png","very-french-gangsters-2.png","very-french-gangsters-3.png"].map((file,idx)=>(
+                <Image src={`/src/assets/images/images/${file}`} alt="Very French Gangsters"
+                       width={1600}
+                       height={1067} class="max-w-full carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700" style={`opacity:${idx===0?1:0}; z-index:${idx===0?10:0}`} loading="lazy" data-idx={idx} />
+            ))}
+            <script type="module">
+              (() => {const images=document.querySelectorAll('#carousel-jeunes .carrousel-img');let current=0;function show(idx){images.forEach((img,i)=>{img.style.opacity=i===idx?'1':'0';img.style.zIndex=i===idx?10:0;});}setInterval(()=>{current=(current+1)%images.length;show(current);},3500);})();
+            </script>
+          </div>
+        </div>
+      </section>
+
+      <!-- ÉQUIPE -->
       <section class="container mx-auto py-16 bg-white/80 rounded-xl p-8" id="equipe">
         <h2 class="text-3xl md:text-4xl font-bold text-center text-[var(--color-primary)] mb-12">L’équipe</h2>
         <div class="flex flex-wrap gap-10 justify-center max-w-10xl mx-auto">
@@ -256,12 +237,18 @@ const collaborators = [
                   <svg viewBox="0 0 130 130" class="absolute top-0 left-0 w-36 h-36 pointer-events-none select-none z-0" style="color: var(--color-primary, #B5838D); transform: rotate(3deg);" fill="none" stroke="currentColor" stroke-width="2.3">
                     <path d="M18 19 Q15 11 25 18 L110 16 Q119 15 118 27 L121 115 Q123 125 110 123 L25 123 Q10 124 13 114 Z" stroke-dasharray="9 7" />
                   </svg>
-                  {/* Image */}
-                  <img src={person.photo} alt={person.name} class="relative z-10 w-32 h-32 rounded-xl object-cover shadow-lg border-4 border-white" />
-                </div>
+                  <Image
+                      src={person.photo}
+                      alt={person.name}
+                      class="max-w-full relative z-10 w-32 h-32 rounded-xl object-cover shadow-lg border-4 border-white"
+                      width={200}
+                      height={200}
+                      loading="lazy"
+                  />                </div>
                 <div>
                   <h3 class="text-[var(--color-primary)] font-semibold text-xl mb-1">{person.name}</h3>
-                  <p class="text-gray-600 text-sm max-w-xs break-words">{person.desc}</p>                </div>
+                  <p class="text-gray-600 text-sm max-w-xs break-words">{person.desc}</p>
+                </div>
               </div>
           ))}
         </div>
@@ -308,6 +295,7 @@ const collaborators = [
         </div>
       </section>
 
+      <!-- CONTACT / GOOGLE MAPS -->
       <section class="relative bg-[var(--color-primary)/10] py-12 md:py-20 overflow-hidden bg-white/80 rounded-xl p-8">
         <!-- Décoration subtile en background -->
         <div class="absolute inset-0 bg-gradient-to-tr from-white/5 to-[var(--color-primary)/5] pointer-events-none"></div>
@@ -376,8 +364,8 @@ const collaborators = [
 
         </div>
       </section>
+
     </div>
   </main>
-
 
 </Layout>
