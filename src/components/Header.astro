@@ -127,11 +127,13 @@
     /* Transition d'ouverture du menu mobile */
     #mobileNav {
       transform: translateY(-10px);
+      pointer-events: none;
     }
 
     #mobileNav.open {
       opacity: 1;
       transform: translateY(0);
+      pointer-events: auto;
     }
   </style>
 </header>

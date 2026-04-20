@@ -1,6 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0E28A3;
+  --color-secondary: #0AE6D2;
+  --color-accent: #36C9C6;
+  --color-bgShowroom: #F6FFFE;
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Poppins", sans-serif;
+
+  --shadow-md-strong: 0 10px 30px rgba(16, 24, 40, 0.12);
+}
+
 
 :root {
   --color-primary: #0E28A3;
