@@ -19,10 +19,13 @@ import Layout from '../layouts/Layout.astro';
   <section class="relative h-[60vh] w-full overflow-hidden">
     <!-- Image + mask -->
     <img
-        src="/images/boutique-interieur-3.png"
+        src="/images-optimized/boutique-interieur-3.webp"
         alt="Showroom Marc & Cécile"
+        width={1920}
+        height={1080}
         class="absolute inset-0 w-full h-full object-cover"
-    />
+        loading="eager"
+     />
     <div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
 
     <!-- Contenu -->

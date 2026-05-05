@@ -1,0 +1,64 @@
+---
+// Composant pour images optimisées avec support responsive et fallback
+interface Props {
+  src: string; // Chemin sans extension (ex: "/images/facade")
+  alt: string;
+  class?: string;
+  loading?: 'lazy' | 'eager';
+  style?: string;
+  width?: number;
+  height?: number;
+  sizes?: string;
+}
+
+const {
+  src,
+  alt,
+  class: className = '',
+  loading = 'lazy',
+  style = '',
+  width,
+  height,
+  sizes = '(max-width: 768px) 400px, (max-width: 1200px) 800px, 1200px'
+} = Astro.props;
+
+// Extraire le nom de fichier sans extension
+const pathParts = src.split('/');
+const fileName = pathParts[pathParts.length - 1];
+const basePath = pathParts.slice(0, -1).join('/');
+
+// Chemins des images optimisées
+const webpPath = `${basePath}-optimized/${fileName}.webp`;
+const webpMobile = `${basePath}-optimized/${fileName}-mobile.webp`;
+const webpTablet = `${basePath}-optimized/${fileName}-tablet.webp`;
+const webpDesktop = `${basePath}-optimized/${fileName}-desktop.webp`;
+const fallbackPath = src; // Utiliser l'image PNG originale comme fallback
+---
+
+<picture>
+  <source
+    media="(max-width: 768px)"
+    srcset={webpMobile}
+    type="image/webp"
+  />
+  <source
+    media="(max-width: 1200px)"
+    srcset={webpTablet}
+    type="image/webp"
+  />
+  <source
+    srcset={webpDesktop}
+    type="image/webp"
+  />
+  <img
+    src={webpPath}
+    alt={alt}
+    class={className}
+    loading={loading}
+    style={style}
+    width={width}
+    height={height}
+    decoding="async"
+  />
+</picture>
+

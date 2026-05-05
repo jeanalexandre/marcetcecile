@@ -49,8 +49,14 @@ const collaborators = [
 
   <!-- === HERO SECTION === -->
   <section class="relative h-[60vh] w-full overflow-hidden">
-    <img src="/images/boutique-interieur-2.png" alt="Showroom Marc & Cécile"
-         class="absolute inset-0 w-full h-full object-cover"/>
+    <img
+      src="/images-optimized/boutique-interieur-2.webp"
+      alt="Showroom Marc & Cécile"
+      width={1920}
+      height={1080}
+      class="absolute inset-0 w-full h-full object-cover"
+      loading="eager"
+     />
     <div class="absolute inset-0 bg-[var(--color-primary)] opacity-70"></div>
 
     <div class="relative z-10 flex items-center justify-center h-full container-max">
@@ -81,7 +87,10 @@ const collaborators = [
          flex flex-wrap justify-center items-center gap-10 max-w-5xl">
     {brandLogos.map(logo => (
         <img src={logo.src} alt={logo.alt}
-             class="h-16 w-auto opacity-70 hover:opacity-100 transition"/>
+             class="h-16 w-auto opacity-70 hover:opacity-100 transition"
+             loading="lazy"
+             width="120"
+             height="64"/>
     ))}
   </section>
 
@@ -103,10 +112,22 @@ const collaborators = [
           </div>
           <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
             <div id="carousel-1" class="relative w-full h-80">
-              <img src="/images/facade.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/boutique-interieur-1.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/boutique-interieur-2.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/images/boutique-interieur-3.png" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
+              <picture>
+                <source media="(max-width: 768px)" srcset="/images-optimized/facade-mobile.webp" />
+                <img src="/images-optimized/facade.webp" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" width="800" height="600" />
+              </picture>
+              <picture>
+                <source media="(max-width: 768px)" srcset="/images-optimized/boutique-interieur-1-mobile.webp" />
+                <img src="/images-optimized/boutique-interieur-1.webp" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" width="800" height="600" />
+              </picture>
+              <picture>
+                <source media="(max-width: 768px)" srcset="/images-optimized/boutique-interieur-2-mobile.webp" />
+                <img src="/images-optimized/boutique-interieur-2.webp" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="2" loading="lazy" width="800" height="600" />
+              </picture>
+              <picture>
+                <source media="(max-width: 768px)" srcset="/images-optimized/boutique-interieur-3-mobile.webp" />
+                <img src="/images-optimized/boutique-interieur-3.webp" alt="La boutique" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="3" loading="lazy" width="800" height="600" />
+              </picture>
               <script type="module">
                 (() => {
                   const images = document.querySelectorAll('#carousel-1 .carrousel-img');
@@ -142,7 +163,7 @@ const collaborators = [
               Bénéficiez d’un suivi précis de votre vue grâce à notre salle d’examen entièrement équipée. Faites contrôler régulièrement votre vision pour assurer le confort optimal de vos lunettes. Nos opticiens formés réalisent votre examen de vue et le renouvellement de votre ordonnance, et vous accompagnent dans le choix de votre nouvelle monture si besoin.
             </p>
           </div>
-          <img src="/images/salle-exam.png" alt="Salle d’examen" class="flex-1 w-full h-80 object-cover rounded-lg shadow-md" loading="lazy" />
+          <img src="/images-optimized/salle-exam.webp" alt="Salle d'examen" width={800} height={600} class="flex-1 w-full h-80 object-cover rounded-lg shadow-md" loading="lazy"  />
         </section>
         <div class="w-full flex justify-center my-4">
           <img src={separatorSvgs[1 % separatorSvgs.length]} alt="Séparateur graphique" class="h-8 md:h-12 w-auto opacity-80" loading="lazy" />
@@ -158,17 +179,17 @@ const collaborators = [
           </div>
           <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
             <div id="carousel-0" class="relative w-full h-80">
-              <img src="/images/c-cile-1.png" alt="C.Cile" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/kuboraum-1.png" alt="Kubaurom" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/theo-1.png" alt="Theo" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/xit-1.png" alt="Xit" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/images/la-brique-et-la-violette-1.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/images/c-cile-2.png" alt="C.Cile" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/kuboraum-2.png" alt="Kubaurom" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/theo-2.png" alt="Theo" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/xit-2.png" alt="Xit" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/images/la-brique-et-la-violette-2.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
-              <img src="/images/la-brique-et-la-violette-3.png" alt="La brique et la violette" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy" />
+              <img src="/images-optimized/c-cile-1.webp" alt="C.Cile" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy"  />
+              <img src="/images-optimized/kuboraum-1.webp" alt="Kubaurom" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy"  />
+              <img src="/images-optimized/theo-1.webp" alt="Theo" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="2" loading="lazy"  />
+              <img src="/images-optimized/xit-1.webp" alt="Xit" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="3" loading="lazy"  />
+              <img src="/images-optimized/la-brique-et-la-violette-1.webp" alt="La brique et la violette" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="4" loading="lazy"  />
+              <img src="/images-optimized/c-cile-2.webp" alt="C.Cile" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="5" loading="lazy"  />
+              <img src="/images-optimized/kuboraum-2.webp" alt="Kubaurom" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="6" loading="lazy"  />
+              <img src="/images-optimized/theo-2.webp" alt="Theo" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="7" loading="lazy"  />
+              <img src="/images-optimized/xit-2.webp" alt="Xit" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="8" loading="lazy"  />
+              <img src="/images-optimized/la-brique-et-la-violette-2.webp" alt="La brique et la violette" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="9" loading="lazy"  />
+              <img src="/images-optimized/la-brique-et-la-violette-3.webp" alt="La brique et la violette" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="10" loading="lazy"  />
               <script type="module">
                 (() => {
                   const images = document.querySelectorAll('#carousel-0 .carrousel-img');
@@ -206,9 +227,9 @@ const collaborators = [
           </div>
           <div class="flex-1 w-full h-80 flex items-center justify-center relative rounded-lg shadow-md overflow-hidden">
             <div id="carousel-2" class="relative w-full h-80">
-              <img src="/images/very-french-gangsters-1.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/very-french-gangsters-2.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
-              <img src="/images/very-french-gangsters-3.png" alt="Very french gangsters" class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy" />
+              <img src="/images-optimized/very-french-gangsters-1.webp" alt="Very french gangsters" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-100 z-10" style="pointer-events:none;" data-idx="0" loading="lazy"  />
+              <img src="/images-optimized/very-french-gangsters-2.webp" alt="Very french gangsters" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="1" loading="lazy"  />
+              <img src="/images-optimized/very-french-gangsters-3.webp" alt="Very french gangsters" width={800} height={600} class="carrousel-img absolute inset-0 m-auto object-cover rounded-lg shadow-md transition-opacity duration-700 opacity-0 z-0" style="pointer-events:none;" data-idx="2" loading="lazy"  />
               <script type="module">
                 (() => {
                   const images = document.querySelectorAll('#carousel-2 .carrousel-img');
@@ -257,7 +278,7 @@ const collaborators = [
                     <path d="M18 19 Q15 11 25 18 L110 16 Q119 15 118 27 L121 115 Q123 125 110 123 L25 123 Q10 124 13 114 Z" stroke-dasharray="9 7" />
                   </svg>
                   {/* Image */}
-                  <img src={person.photo} alt={person.name} class="relative z-10 w-32 h-32 rounded-xl object-cover shadow-lg border-4 border-white" />
+                  <img src={person.photo} alt={person.name} width={256} height={256} class="relative z-10 w-32 h-32 rounded-xl object-cover shadow-lg border-4 border-white" loading="lazy"  />
                 </div>
                 <div>
                   <h3 class="text-[var(--color-primary)] font-semibold text-xl mb-1">{person.name}</h3>
