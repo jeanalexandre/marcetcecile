@@ -6,6 +6,11 @@ export default defineConfig({
   site: 'https://www.marcetcecile.fr',
   base: '/',
   integrations: [sitemap()],
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+  },
   vite: {
     plugins: [tailwindcss()],
   },
