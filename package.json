@@ -9,7 +9,7 @@
     "optimize-images": "node optimize-images.mjs"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.2.2",
+    "@tailwindcss/vite": "^4.3.1",
     "astro": "^6.1.8",
     "glob": "^13.0.6",
     "tailwindcss": "^4.2.2"
